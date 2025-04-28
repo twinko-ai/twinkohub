@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css">
+  <link rel="icon" href="{{ SITEURL }}/theme/images/favicon.ico">
+  {% block extra_head %}{% endblock extra_head %}
+</head>
+<body>
+
+<header id="header">
+  <div class="container">
+    <div class="header-content">
+      <a href="https://www.twinko.ai" class="logo">
+        <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/logo.png" alt="{{ SITENAME }}">
+      </a>
+      <nav id="nav">
+        <ul>
+          <li><a href="{{ SITEURL }}/" class="active">Hub</a></li>
+          <li><a href="{{ SITEURL }}/blog/">Blog</a></li>
+          <li><a href="{{ SITEURL }}/newsletter/">Newsletter</a></li>
+        </ul>
+      </nav>
+      <button class="mobile-menu-button" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  {% block content %}{% endblock content %}
+</main>
+
+<footer id="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="{{ SITEURL }}/theme/images/logo-footer.png" alt="{{ SITENAME }}">
+      </div>
+      <div class="footer-links">
+        <div class="footer-nav">
+          <h3>Links</h3>
+          <ul>
+            <li><a href="{{ SITEURL }}/blog/">Blog</a></li>
+            <li><a href="{{ SITEURL }}/newsletter/">Newsletter</a></li>
+            <li><a href="https://twinko.ai/about">About</a></li>
+            <li><a href="https://twinko.ai/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <ul>
+            {% for name, link in SOCIAL %}
+            <li><a href="{{ link }}" target="_blank">{{ name }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {{ COPYRIGHT_YEAR }} Twinko AI. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+    document.getElementById('nav').classList.toggle('mobile-open');
+  });
+</script>
+
+</body>
+</html>

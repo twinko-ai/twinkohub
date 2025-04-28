@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }}{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>{{ SITENAME }}</h1>
+      <p>Welcome to the Twinko AI Hub - Your source for AI insights, news, and guides.</p>
+      <div class="hero-actions">
+        <a href="{{ SITEURL }}/blog/" class="btn">Read Blog</a>
+        <a href="https://www.twinko.ai/subscribe" class="btn btn-secondary" target="_blank">Subscribe</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+    <h2 class="section-title">Latest Articles</h2>
+    <div class="blog-list">
+      {% for article in articles_page.object_list[:6] %}
+      <div class="blog-card">
+        {% if article.image %}
+        <div class="blog-card-image">
+          <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}">
+        </div>
+        {% endif %}
+        <div class="blog-card-content">
+          <h3 class="blog-card-title">
+            <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+          </h3>
+          <div class="blog-card-excerpt">
+            {{ article.summary }}
+          </div>
+          <div class="blog-card-meta">
+            <span>{{ article.locale_date }}</span>
+            {% if article.category %}
+            <span> • {{ article.category }}</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="text-center" style="margin-top: 40px;">
+      <a href="{{ SITEURL }}/blog/" class="btn">View All Articles</a>
+    </div>
+  </div>
+</section>
+{% endblock content %} 

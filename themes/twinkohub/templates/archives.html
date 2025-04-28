@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Archives - {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="blog-index">
+    <h1 class="section-title">Archives</h1>
+    
+    <div class="archives-list">
+      {% for article in articles %}
+        {% set year_month = article.date.strftime('%Y-%m') %}
+        {% if loop.first or year_month != articles[loop.index0 - 1].date.strftime('%Y-%m') %}
+          <h3 class="archive-date">{{ article.date.strftime('%B %Y') }}</h3>
+        {% endif %}
+        <div class="archive-item">
+          <div class="archive-date-small">{{ article.locale_date }}</div>
+          <div class="archive-title">
+            <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+          </div>
+          {% if article.category %}
+          <div class="archive-category">
+            <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+          </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %} 
