@@ -6,6 +6,17 @@
   <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
   <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css">
   <link rel="icon" href="{{ SITEURL }}/theme/images/favicon.ico">
+  
+  {# Feed Discovery #}
+  {% if FEED_ALL_ATOM %}<link href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />{% endif %}
+  {% if FEED_ALL_RSS %}<link href="{{ SITEURL }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Full RSS Feed" />{% endif %}
+  {% if FEED_ATOM %}<link href="{{ SITEURL }}/{{ FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />{% endif %}
+  {% if FEED_RSS %}<link href="{{ SITEURL }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />{% endif %}
+  {% if CATEGORY_FEED_ATOM and category %}<link href="{{ SITEURL }}/{{ CATEGORY_FEED_ATOM|format(slug=category.slug) }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Categories Atom Feed" />{% endif %}
+  {% if CATEGORY_FEED_RSS and category %}<link href="{{ SITEURL }}/{{ CATEGORY_FEED_RSS|format(slug=category.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Categories RSS Feed" />{% endif %}
+  {% if TAG_FEED_ATOM and tag %}<link href="{{ SITEURL }}/{{ TAG_FEED_ATOM|format(slug=tag.slug) }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Tags Atom Feed" />{% endif %}
+  {% if TAG_FEED_RSS and tag %}<link href="{{ SITEURL }}/{{ TAG_FEED_RSS|format(slug=tag.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />{% endif %}
+
   {% block extra_head %}{% endblock extra_head %}
 </head>
 <body>
@@ -15,7 +26,7 @@
     <div class="header-content">
       <div class="logo-container">
         <a href="{{ SITEURL }}/" class="logo">
-          <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/logo.png" alt="{{ SITENAME }}" class="white-filter">
+          <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/logo.png" alt="{{ SITENAME }}">
         </a>
         <div class="logo-text">Knowledge Hub</div>
       </div>
@@ -26,7 +37,7 @@
           <li><a href="{{ SITEURL }}/newsletter/" {% if output_file.startswith('newsletter/') %}class="active"{% endif %}>Newsletter</a></li>
         </ul>
       </nav>
-      <a href="https://www.twinko.ai/subscribe" class="btn btn-nav-subscribe" target="_blank">Subscribe</a>
+      <a href="https://www.twinko.ai/subscribe" class="btn btn-primary" target="_blank">Subscribe</a>
       <button class="mobile-menu-button" aria-label="Toggle menu">
         <span></span>
         <span></span>

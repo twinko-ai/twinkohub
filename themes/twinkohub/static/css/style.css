@@ -47,11 +47,11 @@ img {
 
 /* Header */
 #header {
-  background-color: var(--primary-color);
+  background-color: var(--background-color);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   height: var(--header-height);
   margin-bottom: 0;
 }
@@ -74,6 +74,7 @@ img {
   display: flex;
   align-items: center;
   height: 100%;
+  margin-right: auto;
 }
 
 .logo {
@@ -91,7 +92,7 @@ img {
 .logo-text {
   font-size: 1.4rem;
   font-weight: 600;
-  color: white;
+  color: var(--primary-color);
   margin-left: 12px;
 }
 
@@ -104,7 +105,7 @@ img {
 }
 
 #nav ul li a {
-  color: var(--light-text);
+  color: var(--text-color);
   font-weight: 500;
   transition: color 0.2s ease;
   position: relative;
@@ -113,7 +114,7 @@ img {
 }
 
 #nav ul li a:hover {
-  color: white;
+  color: var(--primary-color);
 }
 
 #nav ul li a::after {
@@ -123,7 +124,7 @@ img {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: white;
+  background-color: var(--primary-color);
   transition: width 0.3s ease;
 }
 
@@ -132,7 +133,7 @@ img {
 }
 
 #nav ul li a.active {
-  color: white;
+  color: var(--primary-color);
 }
 
 #nav ul li a.active::after {
@@ -155,8 +156,13 @@ img {
   display: block;
   height: 3px;
   width: 100%;
-  background-color: white;
+  background-color: var(--text-color);
   border-radius: 3px;
+}
+
+/* Space between nav and subscribe button in header */
+.header-content .btn-primary {
+  margin-left: 30px; /* Adjust spacing as needed */
 }
 
 /* Main Content */
@@ -754,10 +760,6 @@ img {
     grid-template-columns: 1fr;
     gap: 30px;
   }
-  
-  .btn-nav-subscribe {
-    display: none; /* Hide button on mobile */
-  }
 }
 
 /* Utility Classes */
@@ -944,18 +946,4 @@ blockquote {
   color: #666666;  /* Changed from light-text to darker grey */
   font-size: 0.9rem;
   }
-
-.btn-nav-subscribe {
-  background-color: white;
-  color: var(--primary-color);
-  padding: 8px 16px; /* Slightly smaller padding */
-  font-weight: 600;
-  margin-left: 20px; /* Add space between nav and button */
-}
-
-.btn-nav-subscribe:hover {
-  background-color: var(--light-text);
-  color: var(--primary-color);
-  text-decoration: none;
-}
   
