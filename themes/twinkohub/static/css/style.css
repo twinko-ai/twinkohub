@@ -226,7 +226,7 @@ img {
 }
 
 .footer-logo-img {
-  height: 240px;  /* Doubled from 120px to 240px */
+  height: 150px;  /* Doubled from 120px to 240px */
   width: auto;
   object-fit: contain;
 }
@@ -753,10 +753,6 @@ img {
   .footer-links {
     grid-template-columns: 1fr;
     gap: 30px;
-  }
-  
-  .footer-logo-img {
-    height: 200px;  /* Increased from 100px to 200px for mobile */
   }
   
   .btn-nav-subscribe {
