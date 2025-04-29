@@ -4,7 +4,10 @@
 import os
 import sys
 
-sys.path.append(os.curdir)
+# Add the current directory to the Python path
+CUR_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, CUR_DIR)
+
 from pelicanconf import *
 
 # If your site is available via HTTPS, make sure SITEURL begins with https://
