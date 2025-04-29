@@ -29,5 +29,8 @@ ls -la
 echo "Building site using Pelican..."
 pelican content -o output -s publishconf.py
 
+# Create a Netlify _redirects file in the output directory
+echo "/* /index.html 200" > output/_redirects
+
 # List output directory contents
 ls -la output 

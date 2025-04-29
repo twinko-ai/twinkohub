@@ -15,10 +15,8 @@
 [context.branch-deploy]
   command = "chmod +x build.sh && ./build.sh" 
 
-# Handle 404s by redirecting to index.html
+# Standard SPA redirect for client-side routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200
-  force = false
-  conditions = {Response = {status = [404]}} 
+  status = 200 
