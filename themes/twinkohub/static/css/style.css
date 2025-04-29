@@ -13,8 +13,8 @@
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -23,10 +23,10 @@ body {
   background: var(--background-color);
   line-height: 1.6;
   font-size: 16px;
-}
-
-.container {
-  max-width: 1200px;
+  }
+  
+  .container {
+    max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -599,7 +599,7 @@ img {
 .sidebar-section {
   background: var(--secondary-bg);
   border-radius: 8px;
-  padding: 20px;
+    padding: 20px;
   margin-bottom: 20px;
 }
 
@@ -616,7 +616,7 @@ img {
 }
 
 .sidebar-list li {
-  margin-bottom: 8px;
+  margin-bottom: 2px;
 }
 
 .sidebar-list a {
@@ -625,7 +625,7 @@ img {
   align-items: center;
   color: #666666;
   text-decoration: none;
-  padding: 8px 12px;
+  padding: 4px 12px;
   border-radius: 6px;
   transition: all 0.2s ease;
 }
@@ -757,6 +757,10 @@ img {
   
   .footer-logo-img {
     height: 200px;  /* Increased from 100px to 200px for mobile */
+  }
+  
+  .btn-nav-subscribe {
+    display: none; /* Hide button on mobile */
   }
 }
 
@@ -943,5 +947,19 @@ blockquote {
 .article-date {
   color: #666666;  /* Changed from light-text to darker grey */
   font-size: 0.9rem;
+  }
+
+.btn-nav-subscribe {
+  background-color: white;
+  color: var(--primary-color);
+  padding: 8px 16px; /* Slightly smaller padding */
+  font-weight: 600;
+  margin-left: 20px; /* Add space between nav and button */
+}
+
+.btn-nav-subscribe:hover {
+  background-color: var(--light-text);
+  color: var(--primary-color);
+  text-decoration: none;
 }
   

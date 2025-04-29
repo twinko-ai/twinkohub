@@ -60,34 +60,31 @@
 
       <!-- Sidebar -->
       <aside class="blog-sidebar">
+        {% if categories %}
         <div class="sidebar-section">
-          <h3>Newsletter Archive</h3>
+          <h3>Categories</h3>
           <ul class="sidebar-list">
-            {% set years = [] %}
-            {% for article in newsletter_articles %}
-              {% if article.date.year not in years %}
-                {% set _ = years.append(article.date.year) %}
-              {% endif %}
-            {% endfor %}
-            
-            {% for year in years|sort(reverse=true) %}
+            {% for cat, articles in categories %}
             <li>
-              <a href="{{ SITEURL }}/{{ year }}/">{{ year }} 
-                <span class="count">
-                  ({{ newsletter_articles|selectattr('date.year', 'equalto', year)|list|length }})
-                </span>
+              <a href="{{ SITEURL }}/{{ cat.url }}" {% if active_category and cat == active_category %}class="active"{% endif %}>
+                {{ cat }} <span class="count">({{ articles|count }})</span>
               </a>
             </li>
             {% endfor %}
           </ul>
         </div>
+        {% endif %}
 
+        {% if tags %}
         <div class="sidebar-section">
-          <h3>Subscribe</h3>
-          <div class="subscribe-form">
-            <a href="https://www.twinko.ai/subscribe" class="btn btn-primary" target="_blank">Subscribe Now</a>
+          <h3>Tags</h3>
+          <div class="tag-cloud">
+            {% for tag in tags %}
+            <a href="{{ SITEURL }}/{{ tag.0.url }}" class="tag tag-{{ tag.1 }}">{{ tag.0 }}</a>
+            {% endfor %}
           </div>
         </div>
+        {% endif %}
       </aside>
     </div>
   </div>
