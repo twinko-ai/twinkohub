@@ -1,16 +1,17 @@
 [build]
   publish = "output"
-  command = "PYTHONPATH=$PYTHONPATH:. python -m pelican content -o output -s publishconf.py && echo '/* /index.html 200' > output/_redirects"
+  command = "python -m pelican content -o output -s publishconf.py"
 
 [build.environment]
   PYTHON_VERSION = "3.11"
+  PYTHONPATH = "."  # Set PYTHONPATH here
 
-[context.production]
-  command = "PYTHONPATH=$PYTHONPATH:. python -m pelican content -o output -s publishconf.py && echo '/* /index.html 200' > output/_redirects"
+# Context-specific commands removed as they are identical to the main build command.
+# Netlify will inherit the command from [build] for production, deploy-preview, and branch-deploy.
 
-[context.deploy-preview]
-  command = "PYTHONPATH=$PYTHONPATH:. python -m pelican content -o output -s publishconf.py && echo '/* /index.html 200' > output/_redirects"
-
-[context.branch-deploy]
-  command = "PYTHONPATH=$PYTHONPATH:. python -m pelican content -o output -s publishconf.py && echo '/* /index.html 200' > output/_redirects"
+# Redirect rule for Single Page Application (SPA) behavior
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
 
