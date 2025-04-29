@@ -1,22 +1,16 @@
 [build]
-  command = "chmod +x build.sh && ./build.sh"
   publish = "output"
+  command = "pip install -r requirements.txt && make publish"
 
 [build.environment]
   PYTHON_VERSION = "3.11"
   PYTHONPATH = "."
 
 [context.production]
-  command = "chmod +x build.sh && ./build.sh"
+  command = "pip install -r requirements.txt && make publish"
 
 [context.deploy-preview]
-  command = "chmod +x build.sh && ./build.sh"
+  command = "pip install -r requirements.txt && make publish"
 
 [context.branch-deploy]
-  command = "chmod +x build.sh && ./build.sh" 
-
-# Standard SPA redirect for client-side routing
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200 
+  command = "pip install -r requirements.txt && make publish"
