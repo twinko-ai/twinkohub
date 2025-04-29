@@ -51,7 +51,6 @@ logs/
 
 # Local development
 pelicanconf.py
-publishconf.py
 
 # Cache
 .cache/
