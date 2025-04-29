@@ -4,7 +4,6 @@
 
 [build.environment]
   PYTHON_VERSION = "3.11"
-  PYTHONPATH = "."
 
 [context.production]
   command = "pip install -r requirements.txt && make publish"
@@ -14,3 +13,4 @@
 
 [context.branch-deploy]
   command = "pip install -r requirements.txt && make publish"
+
