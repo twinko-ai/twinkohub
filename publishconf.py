@@ -4,10 +4,16 @@
 import os
 import sys
 
-# Add the current directory to the Python path
-CUR_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, CUR_DIR)
+# Try multiple ways to import pelicanconf
+try:
+    # First try direct import
+    import pelicanconf
+except ImportError:
+    # Fall back to path-based import
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import pelicanconf
 
+# Import all settings from pelicanconf
 from pelicanconf import *
 
 # If your site is available via HTTPS, make sure SITEURL begins with https://
