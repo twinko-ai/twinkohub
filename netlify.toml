@@ -1,16 +1,23 @@
 [build]
   publish = "output"
-  command = "pip install -r requirements.txt && make publish"
+  command = "python -m pelican content -o output -s publishconf.py"
 
 [build.environment]
   PYTHON_VERSION = "3.11"
 
 [context.production]
-  command = "pip install -r requirements.txt && make publish"
+  command = "python -m pelican content -o output -s publishconf.py"
 
 [context.deploy-preview]
-  command = "pip install -r requirements.txt && make publish"
+  command = "python -m pelican content -o output -s publishconf.py"
 
 [context.branch-deploy]
-  command = "pip install -r requirements.txt && make publish"
+  command = "python -m pelican content -o output -s publishconf.py"
+
+# Create a _redirects file at build time for Netlify
+[[plugins]]
+  package = "@netlify/plugin-functions-core"
+
+[[plugins.inputs.postBuild]]
+  command = "echo '/* /index.html 200' > output/_redirects"
 
