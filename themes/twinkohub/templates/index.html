@@ -6,11 +6,10 @@
 <section class="hero">
   <div class="container">
     <div class="hero-content">
-      <h1>{{ SITENAME }}</h1>
-      <p>Welcome to the Twinko AI Hub - Your source for AI insights, news, and guides.</p>
+      <h1>Welcome to Our Open Knowledge Hub</h1>
+      <p>Your source for AI insights, news, and guides from the Twinko AI team.</p>
       <div class="hero-actions">
-        <a href="{{ SITEURL }}/blog/" class="btn">Read Blog</a>
-        <a href="https://www.twinko.ai/subscribe" class="btn btn-secondary" target="_blank">Subscribe</a>
+        <a href="https://www.twinko.ai/subscribe" class="btn btn-primary" target="_blank">Subscribe</a>
       </div>
     </div>
   </div>
@@ -19,8 +18,16 @@
 <section class="content-section">
   <div class="container">
     <h2 class="section-title">Latest Articles</h2>
+    
     <div class="blog-list">
-      {% for article in articles_page.object_list[:6] %}
+      {% set latest_articles = [] %}
+      {% for article in articles %}
+        {% if article.category|string != 'newsletter' %}
+          {% set _ = latest_articles.append(article) %}
+        {% endif %}
+      {% endfor %}
+      
+      {% for article in latest_articles[:3] %}
       <div class="blog-card">
         {% if article.image %}
         <div class="blog-card-image">
@@ -28,11 +35,13 @@
         </div>
         {% endif %}
         <div class="blog-card-content">
-          <h3 class="blog-card-title">
-            <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
-          </h3>
-          <div class="blog-card-excerpt">
-            {{ article.summary }}
+          <div>
+            <h3 class="blog-card-title">
+              <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+            </h3>
+            <div class="blog-card-excerpt">
+              {{ article.summary }}
+            </div>
           </div>
           <div class="blog-card-meta">
             <span>{{ article.locale_date }}</span>
@@ -44,8 +53,51 @@
       </div>
       {% endfor %}
     </div>
+    
     <div class="text-center" style="margin-top: 40px;">
       <a href="{{ SITEURL }}/blog/" class="btn">View All Articles</a>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" style="background-color: var(--secondary-bg);">
+  <div class="container">
+    <h2 class="section-title">Latest Newsletters</h2>
+    
+    <div class="blog-list">
+      {% set latest_newsletters = [] %}
+      {% for article in articles %}
+        {% if article.category|string == 'newsletter' %}
+          {% set _ = latest_newsletters.append(article) %}
+        {% endif %}
+      {% endfor %}
+      
+      {% for article in latest_newsletters[:3] %}
+      <div class="blog-card">
+        {% if article.image %}
+        <div class="blog-card-image">
+          <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}">
+        </div>
+        {% endif %}
+        <div class="blog-card-content">
+          <div>
+            <h3 class="blog-card-title">
+              <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+            </h3>
+            <div class="blog-card-excerpt">
+              {{ article.summary }}
+            </div>
+          </div>
+          <div class="blog-card-meta">
+            <span>{{ article.locale_date }}</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    
+    <div class="text-center" style="margin-top: 40px;">
+      <a href="{{ SITEURL }}/newsletter/" class="btn">View All Newsletters</a>
     </div>
   </div>
 </section>

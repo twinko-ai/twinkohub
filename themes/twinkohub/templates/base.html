@@ -13,14 +13,17 @@
 <header id="header">
   <div class="container">
     <div class="header-content">
-      <a href="https://www.twinko.ai" class="logo">
-        <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/logo.png" alt="{{ SITENAME }}">
-      </a>
+      <div class="logo-container">
+        <a href="{{ SITEURL }}/" class="logo">
+          <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/logo.png" alt="{{ SITENAME }}" class="white-filter">
+        </a>
+        <div class="logo-text">Knowledge Hub</div>
+      </div>
       <nav id="nav">
         <ul>
-          <li><a href="{{ SITEURL }}/" class="active">Hub</a></li>
-          <li><a href="{{ SITEURL }}/blog/">Blog</a></li>
-          <li><a href="{{ SITEURL }}/newsletter/">Newsletter</a></li>
+          <li><a href="{{ SITEURL }}/" {% if output_file == "index.html" %}class="active"{% endif %}>Home</a></li>
+          <li><a href="{{ SITEURL }}/blog/" {% if output_file.startswith('blog/') or output_file.startswith('category/') or output_file.startswith('tag/') %}class="active"{% endif %}>Blog</a></li>
+          <li><a href="{{ SITEURL }}/newsletter/" {% if output_file.startswith('newsletter/') %}class="active"{% endif %}>Newsletter</a></li>
         </ul>
       </nav>
       <button class="mobile-menu-button" aria-label="Toggle menu">
@@ -40,16 +43,23 @@
   <div class="container">
     <div class="footer-content">
       <div class="footer-logo">
-        <img src="{{ SITEURL }}/theme/images/logo-footer.png" alt="{{ SITENAME }}">
+        <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/logo.png" alt="{{ SITENAME }}" class="footer-logo-img white-filter">
       </div>
       <div class="footer-links">
         <div class="footer-nav">
-          <h3>Links</h3>
+          <h3>Content</h3>
           <ul>
-            <li><a href="{{ SITEURL }}/blog/">Blog</a></li>
-            <li><a href="{{ SITEURL }}/newsletter/">Newsletter</a></li>
-            <li><a href="https://twinko.ai/about">About</a></li>
-            <li><a href="https://twinko.ai/contact">Contact</a></li>
+            <li><a href="{{ SITEURL }}/archives.html">Archives</a></li>
+            <li><a href="{{ SITEURL }}/categories.html">Categories</a></li>
+            <li><a href="{{ SITEURL }}/tags.html">Tags</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="https://www.twinko.ai/company" target="_blank">About Us</a></li>
+            <li><a href="https://www.twinko.ai/team" target="_blank">Our Team</a></li>
+            <li><a href="https://www.twinko.ai/contact" target="_blank">Contact</a></li>
           </ul>
         </div>
         <div class="footer-social">

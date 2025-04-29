@@ -1,31 +1,78 @@
 {% extends "base.html" %}
 
-{% block title %}Archives - {{ SITENAME }}{% endblock %}
+{% block title %}{{ SITENAME }} - Archives{% endblock %}
 
 {% block content %}
-<div class="container">
-  <div class="blog-index">
+<section class="content-section">
+  <div class="container">
     <h1 class="section-title">Archives</h1>
     
     <div class="archives-list">
-      {% for article in articles %}
-        {% set year_month = article.date.strftime('%Y-%m') %}
-        {% if loop.first or year_month != articles[loop.index0 - 1].date.strftime('%Y-%m') %}
-          <h3 class="archive-date">{{ article.date.strftime('%B %Y') }}</h3>
-        {% endif %}
-        <div class="archive-item">
-          <div class="archive-date-small">{{ article.locale_date }}</div>
-          <div class="archive-title">
-            <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
-          </div>
-          {% if article.category %}
-          <div class="archive-category">
-            <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
-          </div>
+      {% if dates %}
+        {% for article in dates %}
+          {% if loop.first or not (article.date.year == dates[loop.index0-1].date.year and article.date.month == dates[loop.index0-1].date.month) %}
+            {% if not loop.first %}
+            </ul>
+            {% endif %}
+            <h2 class="archive-month">{{ article.date|strftime('%B %Y') }}</h2>
+            <ul class="article-list">
           {% endif %}
-        </div>
-      {% endfor %}
+              <li>
+                <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+                <span class="article-date">{{ article.locale_date }}</span>
+              </li>
+          {% if loop.last %}
+            </ul>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <p>No articles in the archives.</p>
+      {% endif %}
     </div>
   </div>
-</div>
+</section>
+
+<style>
+  .archives-list {
+    margin-top: 40px;
+  }
+  .archive-month {
+    font-size: 1.5rem;
+    margin: 30px 0 20px;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+  }
+  .article-list {
+    list-style: none;
+    padding: 0;
+  }
+  .article-list li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .article-list a {
+    color: var(--text-color);
+    font-weight: 500;
+    margin-right: 10px;
+  }
+  .article-date {
+    color: var(--light-text);
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    .article-list li {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+    .article-date {
+      margin-top: 5px;
+    }
+  }
+</style>
 {% endblock %} 

@@ -38,22 +38,13 @@
     {% if article.tags %}
     <div class="article-tags">
       <h4>Tags:</h4>
-      <ul class="tag-list">
+      <div class="tag-cloud">
         {% for tag in article.tags %}
-        <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a></li>
+        <a href="{{ SITEURL }}/{{ tag.url }}" class="tag">{{ tag }}</a>
         {% endfor %}
-      </ul>
-    </div>
-    {% endif %}
-    
-    <div class="article-share">
-      <h4>Share this article:</h4>
-      <div class="share-links">
-        <a href="https://twitter.com/share?url={{ SITEURL }}/{{ article.url }}&text={{ article.title }}" target="_blank" rel="noopener">Twitter</a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u={{ SITEURL }}/{{ article.url }}" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ SITEURL }}/{{ article.url }}&title={{ article.title }}" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
+    {% endif %}
   </article>
 </div>
 {% endblock %} 

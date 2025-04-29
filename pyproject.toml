@@ -1,7 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "twinkohub"
 version = "0.1.0"
-description = "Add your description here"
+description = "Twinko AI Knowledge Hub - Pelican-based static site"
 readme = "README.md"
-requires-python = ">=3.13"
-dependencies = []
+requires-python = ">=3.8"
+license = {text = "MIT"}
+dependencies = [
+    "pelican>=4.11.0",
+    "markdown>=3.8",
+    "jinja2>=3.1.6",
+    "pygments>=2.18.0",
+    "docutils>=0.21.2",
+    "feedgenerator>=2.1.0",
+    "unidecode>=1.4.0",
+    "rich>=14.0.0",
+    "pytz>=2025.2",
+    "python-dateutil>=2.9.0.post0",
+    "watchfiles>=1.0.5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=24.1.0",
+    "isort>=5.13.0",
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py38", "py39", "py310", "py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"

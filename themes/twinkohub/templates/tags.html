@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - Tags{% endblock %}
+
+{% block content %}
+<section class="content-section">
+  <div class="container">
+    <h1 class="section-title">Tags</h1>
+    
+    {% if tags %}
+      <div class="tags-cloud">
+        {% for tag, articles in tags|sort %}
+        <a href="{{ SITEURL }}/{{ tag.url }}" class="tag-item">
+          {{ tag }} <span class="count">({{ articles|count }})</span>
+        </a>
+        {% endfor %}
+      </div>
+      
+      <div class="tags-list">
+        {% for tag, articles in tags|sort %}
+        <div class="tag-group">
+          <h2 class="tag-title" id="tag-{{ tag|lower }}">
+            {{ tag }}
+            <span class="count">({{ articles|count }})</span>
+          </h2>
+          <ul class="article-list">
+            {% for article in articles %}
+            <li>
+              <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+              <span class="article-date">{{ article.locale_date }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>No tags found.</p>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+  .tag-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    background: var(--secondary-bg);
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+  }
+  .tag-item:hover {
+    background: var(--primary-color);
+    color: white;
+  }
+  .tags-list {
+    margin-top: 40px;
+  }
+  .tag-group {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .tag-group:last-child {
+    border-bottom: none;
+  }
+  .tag-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+  }
+  .article-list {
+    list-style: none;
+    padding: 0;
+  }
+  .article-list li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  @media (max-width: 768px) {
+    .article-list li {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+    .article-date {
+      margin-top: 5px;
+    }
+  }
+</style>
+{% endblock %} 

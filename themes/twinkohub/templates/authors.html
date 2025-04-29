@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - Authors{% endblock %}
+
+{% block content %}
+<section class="content-section">
+  <div class="container">
+    <h1 class="section-title">Authors</h1>
+    
+    <div class="authors-list">
+      {% if authors %}
+        {% for author, articles in authors|sort %}
+        <div class="author-item">
+          <h2 class="author-name">
+            <a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
+            <span class="count">({{ articles|count }})</span>
+          </h2>
+          <ul class="article-list">
+            {% for article in articles %}
+            <li>
+              <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+              <span class="article-date">{{ article.locale_date }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}
+      {% else %}
+        <p>No authors found.</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .authors-list {
+    margin-top: 40px;
+  }
+  .author-item {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .author-item:last-child {
+    border-bottom: none;
+  }
+  .author-name {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+  }
+  .author-name .count {
+    color: var(--light-text);
+    font-size: 1rem;
+    font-weight: normal;
+  }
+  .article-list {
+    list-style: none;
+    padding: 0;
+  }
+  .article-list li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .article-list a {
+    color: var(--text-color);
+    font-weight: 500;
+    margin-right: 10px;
+  }
+  .article-date {
+    color: var(--light-text);
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    .article-list li {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+    .article-date {
+      margin-top: 5px;
+    }
+  }
+</style>
+{% endblock %} 

@@ -1,31 +1,10 @@
-# This file is only used if you use `make publish` or
-# explicitly specify it as your config file.
-
-import os
-import sys
-
-# Try multiple ways to import pelicanconf
-try:
-    # First try direct import
-    import pelicanconf
-except ImportError:
-    # Fall back to path-based import
-    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-    import pelicanconf
-
-# Import all settings from pelicanconf
 from pelicanconf import *
 
-# If your site is available via HTTPS, make sure SITEURL begins with https://
-SITEURL = "https://hub.twinko.ai"
+SITEURL = 'https://twinko-ai.github.io/twinkohub'
 RELATIVE_URLS = False
 
+# Feed settings
 FEED_ALL_ATOM = "feeds/all.atom.xml"
 CATEGORY_FEED_ATOM = "feeds/{slug}.atom.xml"
 
 DELETE_OUTPUT_DIRECTORY = True
-
-# Following items are often useful when publishing
-
-# DISQUS_SITENAME = ""
-# GOOGLE_ANALYTICS = ""

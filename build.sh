@@ -3,8 +3,21 @@
 # Echo commands for debugging
 set -x
 
-# Install dependencies
-pip install -r requirements.txt
+# Create output directory
+mkdir -p output
+
+# Print current directory
+pwd
+
+# Add current directory to Python path
+export PYTHONPATH=$PYTHONPATH:$(pwd)
+
+# Install dependencies using pip if uv is not available
+if command -v uv &> /dev/null; then
+    uv pip install -r requirements.txt
+else
+    pip install -r requirements.txt
+fi
 
 # Show Python version
 python --version
@@ -12,11 +25,9 @@ python --version
 # Show current directory contents
 ls -la
 
-# Show Python path
-python -c "import sys; print(sys.path)"
-
-# Build the site directly with pelican
+# Build the site
+echo "Building site using Pelican..."
 pelican content -o output -s publishconf.py
 
-# Show output directory contents
+# List output directory contents
 ls -la output 

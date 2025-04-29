@@ -3,4 +3,14 @@
   publish = "output"
 
 [build.environment]
-  PYTHON_VERSION = "3.9" 
+  PYTHON_VERSION = "3.11"
+  PYTHONPATH = "."
+
+[context.production]
+  command = "chmod +x build.sh && ./build.sh"
+
+[context.deploy-preview]
+  command = "chmod +x build.sh && ./build.sh"
+
+[context.branch-deploy]
+  command = "chmod +x build.sh && ./build.sh" 
