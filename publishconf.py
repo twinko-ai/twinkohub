@@ -1,7 +1,8 @@
 from pelicanconf import *
 
-SITEURL = 'https://twinko-ai.github.io/twinkohub'
-RELATIVE_URLS = False
+# Remove hardcoded URL to make it work with Netlify's domain
+SITEURL = ''
+RELATIVE_URLS = True
 
 # Feed settings
 FEED_ALL_ATOM = "feeds/all.atom.xml"
