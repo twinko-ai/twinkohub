@@ -1,16 +1,16 @@
 [build]
   publish = "output"
-  command = "python -m pelican content -o output -s publishconf.py && echo '/* /index.html 200' > output/_redirects"
+  command = "PYTHONPATH=$PYTHONPATH:. python -m pelican content -o output -s publishconf.py && echo '/* /index.html 200' > output/_redirects"
 
 [build.environment]
   PYTHON_VERSION = "3.11"
 
 [context.production]
-  command = "python -m pelican content -o output -s publishconf.py && echo '/* /index.html 200' > output/_redirects"
+  command = "PYTHONPATH=$PYTHONPATH:. python -m pelican content -o output -s publishconf.py && echo '/* /index.html 200' > output/_redirects"
 
 [context.deploy-preview]
-  command = "python -m pelican content -o output -s publishconf.py && echo '/* /index.html 200' > output/_redirects"
+  command = "PYTHONPATH=$PYTHONPATH:. python -m pelican content -o output -s publishconf.py && echo '/* /index.html 200' > output/_redirects"
 
 [context.branch-deploy]
-  command = "python -m pelican content -o output -s publishconf.py && echo '/* /index.html 200' > output/_redirects"
+  command = "PYTHONPATH=$PYTHONPATH:. python -m pelican content -o output -s publishconf.py && echo '/* /index.html 200' > output/_redirects"
 
