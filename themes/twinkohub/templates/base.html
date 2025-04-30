@@ -18,6 +18,8 @@
   {% if TAG_FEED_RSS and tag %}<link href="{{ SITEURL }}/{{ TAG_FEED_RSS|format(slug=tag.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />{% endif %}
 
   {% block extra_head %}{% endblock extra_head %}
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.27.20/tocbot.css">
 </head>
 <body>
 
@@ -94,6 +96,51 @@
   document.querySelector('.mobile-menu-button').addEventListener('click', function() {
     document.getElementById('nav').classList.toggle('mobile-open');
   });
+</script>
+
+<!-- Scripts -->
+<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/scripts.js"></script>
+{# Add Tocbot JS and initialization #}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.27.20/tocbot.min.js"></script>
+<script>
+  // Only initialize Tocbot on pages where the necessary elements exist
+  if (document.querySelector('.js-toc') && document.querySelector('.js-toc-content')) {
+    document.addEventListener('DOMContentLoaded', function() {
+      tocbot.init({
+        // Where to render the table of contents
+        tocSelector: '.js-toc',
+        // Where to grab the headings from
+        contentSelector: '.js-toc-content',
+        // Which headings to grab inside of the contentSelector element
+        headingSelector: 'h2, h3',
+        // For headings inside relative or absolute positioned containers within content
+        hasInnerContainers: true,
+        // Smooth scroll settings
+        scrollSmooth: true,
+        scrollSmoothDuration: 300,
+        scrollSmoothOffset: -60, // Offset for fixed header
+        // Higher value indicates a larger "window" of headings that will be considered active
+        headingsOffset: 100, // Adjust if needed for better highlight accuracy
+        // Add CSS classes for styling
+        linkClass: 'toc-link',
+        extraLinkClasses: '',
+        activeLinkClass: 'is-active-link',
+        // Extra classes for list levels
+        listClass: 'toc-list',
+        listItemClass: 'toc-list-item',
+        // Update scroll position if clicked on TOC link (important for smooth scrolling)
+        onClick: function(e) {
+          // Default behavior with smooth scroll
+        },
+        // Scroll container
+        scrollContainer: null,
+        // Disable automatic collapsing
+        collapseDepth: 6, // Show all levels by default
+        // Throttle scroll event for better performance
+        throttleTimeout: 50
+      });
+    });
+  }
 </script>
 
 </body>
