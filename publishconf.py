@@ -1,29 +1,101 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
-# No need for sys.path manipulation if run from project root
-
-from pelicanconf import * 
 
 # This file contains ALL settings for the PRODUCTION build
 import datetime
-import os  # <<< Added os import for getenv
+import os # <<< ADDED for os.getenv
 
-# If your site is available via HTTPS, make sure SITEURL begins with https://
-SITEURL = 'https://twinkohub.netlify.app' # Make sure this matches your actual production URL
-RELATIVE_URLS = False
+# --- Settings from pelicanconf.py --- 
+AUTHOR = 'Twinko AI'
+SITENAME = 'Twinko AI Knowledge Hub'
 
-# Inherit feed settings from pelicanconf.py unless specifically overridden
-# Example feed override (currently using settings from pelicanconf):
-# FEED_ALL_ATOM = 'feeds/all.atom.xml'
-# CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
+PATH = "content"
+PLUGIN_PATHS = ['plugins']
+PLUGINS = []
 
-DELETE_OUTPUT_DIRECTORY = True
+ARTICLE_PATHS = ['en/blog', 'en/newsletter']
+PAGE_PATHS = ['en/pages']
+STATIC_PATHS = ['images', 'extra']
 
-# Following items are often useful for production debugging:
-# DISQUS_SITENAME = ""
-# GOOGLE_ANALYTICS = ""
+TIMEZONE = 'America/New_York'
 
-# RSS Feed Widget IDs - Use environment variables (Copied from pelicanconf)
+DEFAULT_LANG = 'en'
+THEME = 'themes/twinkohub'
+
+# Theme-specific settings
+LOGO = '/theme/images/logo.png'
+LOGO_FOOTER = '/theme/images/logo-footer.png'
+
+# URL settings
+ARTICLE_URL = '{category}/{slug}.html'
+ARTICLE_SAVE_AS = '{category}/{slug}.html'
+PAGE_URL = '{slug}.html'
+PAGE_SAVE_AS = '{slug}.html'
+
+# Categories and tags settings
+CATEGORY_URL = 'category/{slug}/'
+CATEGORY_SAVE_AS = 'category/{slug}/index.html'
+TAG_URL = 'tag/{slug}/'
+TAG_SAVE_AS = 'tag/{slug}/index.html'
+
+# Index page settings
+INDEX_SAVE_AS = 'index.html'
+
+# Blog and Newsletter settings
+DIRECT_TEMPLATES = [
+    'index', 'categories', 'archives', 'tags', 'authors', 'blog', 'newsletter', 'newsfeed' # <<< Re-added newsfeed
+]
+BLOG_URL = 'blog/'
+BLOG_SAVE_AS = 'blog/index.html'
+NEWSLETTER_URL = 'newsletter/'
+NEWSLETTER_SAVE_AS = 'newsletter/index.html'
+NEWSFEED_URL = 'newsfeed/' # <<< Added newsfeed URL/Save AS
+NEWSFEED_SAVE_AS = 'newsfeed/index.html' # <<< Added newsfeed URL/Save AS
+
+# Social links for footer
+SOCIAL = (
+    ("LinkedIn", "https://www.linkedin.com/company/twinko-ai"),
+    ("GitHub", "https://github.com/twinko-ai"),
+    ("Twitter", "https://x.com/TwinkoAI")
+)
+
+# Default pagination
+DEFAULT_PAGINATION = 10
+SUMMARY_MAX_LENGTH = 150
+
+# Theme-specific extras
+DEFAULT_ARTICLE_IMAGE = 'theme/images/default-article.jpg'
+COPYRIGHT_YEAR = datetime.date.today().year
+
+# Markdown extensions (assuming these were implicitly in pelicanconf)
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'highlight'},
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+        'markdown.extensions.toc': {
+            'permalink': False,
+            'toc_depth': '2-3'
+        },
+    },
+    'output_format': 'html5',
+}
+
+# Feed settings (matching pelicanconf for consistency)
+FEED_ALL_ATOM = None
+FEED_ALL_RSS = None
+CATEGORY_FEED_ATOM = None
+CATEGORY_FEED_RSS = None
+TAG_FEED_ATOM = None
+TAG_FEED_RSS = None
+FEED_ATOM = None
+FEED_RSS = None
+NEWSLETTER_FEED_ATOM = 'feeds/newsletter.atom.xml'
+NEWSLETTER_FEED_RSS = 'feeds/newsletter.rss.xml'
+BLOG_FEED_ATOM = 'feeds/blog.atom.xml'
+BLOG_FEED_RSS = 'feeds/blog.rss.xml'
+
+# RSS Feed Widget IDs - Use environment variables (REQUIRED)
 RSS_FEED_IDS = {
     'everything': os.getenv('RSS_FEED_ID_EVERYTHING'),
     'healthcare': os.getenv('RSS_FEED_ID_HEALTHCARE'),
@@ -32,3 +104,13 @@ RSS_FEED_IDS = {
     'safety': os.getenv('RSS_FEED_ID_SAFETY'),
     'homepage_carousel': os.getenv('RSS_FEED_ID_HOMEPAGE_CAROUSEL')
 }
+
+# --- Production-specific settings --- 
+SITEURL = 'https://twinkohub.netlify.app'
+RELATIVE_URLS = False
+
+# Feed overrides (commented out to use above settings)
+# FEED_ALL_ATOM = 'feeds/all.atom.xml'
+# CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
+
+DELETE_OUTPUT_DIRECTORY = True
