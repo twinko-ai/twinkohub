@@ -284,6 +284,21 @@ img {
   font-size: 0.875rem;
 }
 
+/* Add this rule to ensure footer bottom links are visible */
+.footer-bottom p a {
+  color: var(--light-grey, #ccc); /* Use a light color, fallback to #ccc */
+  text-decoration: underline; /* Add underline for better visibility */
+}
+
+.footer-bottom p a:hover {
+  color: var(--white, #fff); /* Slightly brighter on hover */
+}
+
+/* Optionally, ensure the paragraph text itself is visible */
+.footer-bottom p {
+  color: var(--light-grey, #ccc); /* Match link color or choose another visible one */
+}
+
 /* Article */
 .article {
   max-width: 800px;
@@ -352,6 +367,36 @@ img {
   padding: 2px 5px;
   border-radius: 3px;
 }
+
+/* NEW: Article Specific License Notice Styles */
+.article-license-notice {
+  background-color: var(--secondary-bg, #f0f0f0); /* Light background */
+  border-left: 4px solid var(--primary-color, #4a90e2); /* Accent border */
+  padding: 15px 20px;
+  margin: 25px 0; /* Space above and below */
+  border-radius: 4px;
+  font-size: 0.9rem; /* Slightly smaller text */
+  color: var(--text-color, #333); /* Ensure text is readable */
+}
+
+.article-license-notice p {
+  margin: 0;
+}
+
+.article-license-notice strong {
+  color: var(--primary-color, #4a90e2);
+}
+
+.article-license-notice a {
+  /* Ensure links within the license notice are styled appropriately */
+  color: var(--primary-color, #4a90e2);
+  text-decoration: underline;
+}
+
+.article-license-notice a:hover {
+  text-decoration: none;
+}
+/* End New Styles */
 
 /* Article tags */
 .article-tags {

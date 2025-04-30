@@ -5,6 +5,7 @@ Lang: en
 Tags: ai, machine-learning, technology
 Summary: Exploring the latest breakthroughs in artificial intelligence and their potential impact.
 Image: /images/newsletter/newsletter-intro.jpg
+License: © 2023 Twinko AI. All Rights Reserved. Contact for permissions. 
 
 # Recent Advances in AI Technologies
 

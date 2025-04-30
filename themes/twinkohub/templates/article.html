@@ -33,6 +33,14 @@
         {% endif %}
       </div>
       
+      {# NEW: Article Specific License Notice #}
+      {% if article.license %}
+      <div class="article-license-notice">
+        <p><strong>License:</strong> {{ article.license | safe }}</p>
+      </div>
+      {% endif %}
+      {# --- End License Notice --- #}
+      
       {% if article.image %}
       <div class="article-image">
         <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}">
@@ -74,4 +82,5 @@
     </article>
   </div>
 </div>
+
 {% endblock %} 
