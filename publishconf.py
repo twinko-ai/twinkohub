@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*- #
 import os
 import sys
-sys.path.append(os.curdir)
+# Add the directory containing this file to the Python path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from pelicanconf import * 
 
 # This file contains overrides for the PRODUCTION build
