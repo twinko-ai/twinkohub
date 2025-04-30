@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}AI Newsfeed - {{ SITENAME }}{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="Stay updated with the latest AI news across various domains including healthcare, bioinformatics, AI agents, and safety. Curated newsfeed for AI enthusiasts and professionals.">
+<script>
+// Prevent direct access to RSS feed URLs
+if (window.location.href.includes('/feeds/') && !window.location.href.includes('blog') && !window.location.href.includes('newsletter')) {
+    window.location.href = '/newsfeed/';
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="newsfeed-header">
+    <h1>AI Newsfeed</h1>
+    <div class="category-tabs">
+      {% if RSS_FEED_IDS['everything'] %}
+      <button class="tab-btn active" data-category="everything">Everything AI</button>
+      {% endif %}
+      {% if RSS_FEED_IDS['healthcare'] %}
+      <button class="tab-btn" data-category="healthcare">AI in Healthcare & Life Science</button>
+      {% endif %}
+      {% if RSS_FEED_IDS['bioinformatics'] %}
+      <button class="tab-btn" data-category="bioinformatics">AI in Bioinformatics</button>
+      {% endif %}
+      {% if RSS_FEED_IDS['agents'] %}
+      <button class="tab-btn" data-category="agents">AI Agents</button>
+      {% endif %}
+      {% if RSS_FEED_IDS['safety'] %}
+      <button class="tab-btn" data-category="safety">AI Safety</button>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="newsfeed-content">
+    <!-- Default/Everything AI Feed -->
+    {% if RSS_FEED_IDS['everything'] %}
+    <div class="feed-container active" id="feed-everything">
+      <rssapp-magazine id="{{ RSS_FEED_IDS['everything'] }}"></rssapp-magazine>
+      <script src="https://widget.rss.app/v1/magazine.js" type="text/javascript" async></script>
+    </div>
+    {% endif %}
+
+    <!-- Healthcare & Life Science Feed -->
+    {% if RSS_FEED_IDS['healthcare'] %}
+    <div class="feed-container" id="feed-healthcare">
+      <rssapp-magazine id="{{ RSS_FEED_IDS['healthcare'] }}"></rssapp-magazine>
+      <script src="https://widget.rss.app/v1/magazine.js" type="text/javascript" async></script>
+    </div>
+    {% endif %}
+
+    <!-- AI in Bioinformatics Feed -->
+    {% if RSS_FEED_IDS['bioinformatics'] %}
+    <div class="feed-container" id="feed-bioinformatics">
+      <rssapp-magazine id="{{ RSS_FEED_IDS['bioinformatics'] }}"></rssapp-magazine>
+      <script src="https://widget.rss.app/v1/magazine.js" type="text/javascript" async></script>
+    </div>
+    {% endif %}
+
+    <!-- AI Agents Feed -->
+    {% if RSS_FEED_IDS['agents'] %}
+    <div class="feed-container" id="feed-agents">
+      <rssapp-magazine id="{{ RSS_FEED_IDS['agents'] }}"></rssapp-magazine>
+      <script src="https://widget.rss.app/v1/magazine.js" type="text/javascript" async></script>
+    </div>
+    {% endif %}
+
+    <!-- AI Safety Feed -->
+    {% if RSS_FEED_IDS['safety'] %}
+    <div class="feed-container" id="feed-safety">
+      <rssapp-magazine id="{{ RSS_FEED_IDS['safety'] }}"></rssapp-magazine>
+      <script src="https://widget.rss.app/v1/magazine.js" type="text/javascript" async></script>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tabs = document.querySelectorAll('.tab-btn');
+  const feeds = document.querySelectorAll('.feed-container');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active class from all tabs and feeds
+      tabs.forEach(t => t.classList.remove('active'));
+      feeds.forEach(f => f.classList.remove('active'));
+
+      // Add active class to clicked tab and corresponding feed
+      tab.classList.add('active');
+      const category = tab.dataset.category;
+      document.getElementById(`feed-${category}`).classList.add('active');
+    });
+  });
+});
+</script>
+{% endblock %} 

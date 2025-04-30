@@ -16,6 +16,10 @@
   {% if CATEGORY_FEED_RSS and category %}<link href="{{ SITEURL }}/{{ CATEGORY_FEED_RSS|format(slug=category.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Categories RSS Feed" />{% endif %}
   {% if TAG_FEED_ATOM and tag %}<link href="{{ SITEURL }}/{{ TAG_FEED_ATOM|format(slug=tag.slug) }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Tags Atom Feed" />{% endif %}
   {% if TAG_FEED_RSS and tag %}<link href="{{ SITEURL }}/{{ TAG_FEED_RSS|format(slug=tag.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed" />{% endif %}
+  {% if NEWSLETTER_FEED_ATOM %}<link href="{{ SITEURL }}/{{ NEWSLETTER_FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Newsletter Atom Feed" />{% endif %}
+  {% if NEWSLETTER_FEED_RSS %}<link href="{{ SITEURL }}/{{ NEWSLETTER_FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Newsletter RSS Feed" />{% endif %}
+  {% if BLOG_FEED_ATOM %}<link href="{{ SITEURL }}/{{ BLOG_FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Blog Atom Feed" />{% endif %}
+  {% if BLOG_FEED_RSS %}<link href="{{ SITEURL }}/{{ BLOG_FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Blog RSS Feed" />{% endif %}
 
   {% block extra_head %}{% endblock extra_head %}
 
@@ -35,8 +39,9 @@
       <nav id="nav">
         <ul>
           <li><a href="{{ SITEURL }}/" {% if output_file == "index.html" %}class="active"{% endif %}>Home</a></li>
-          <li><a href="{{ SITEURL }}/blog/" {% if output_file.startswith('blog/') or output_file.startswith('category/') or output_file.startswith('tag/') %}class="active"{% endif %}>Blog</a></li>
+          <li><a href="{{ SITEURL }}/newsfeed/" {% if output_file.startswith('newsfeed/') %}class="active"{% endif %}>Newsfeed</a></li>
           <li><a href="{{ SITEURL }}/newsletter/" {% if output_file.startswith('newsletter/') %}class="active"{% endif %}>Newsletter</a></li>
+          <li><a href="{{ SITEURL }}/blog/" {% if output_file.startswith('blog/') or output_file.startswith('category/') or output_file.startswith('tag/') %}class="active"{% endif %}>Blog</a></li>
         </ul>
       </nav>
       <a href="https://www.twinko.ai/subscribe" class="btn btn-primary" target="_blank">Subscribe</a>

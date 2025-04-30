@@ -101,4 +101,24 @@
     </div>
   </div>
 </section>
+
+<section class="content-section">
+  <div class="container">
+    <h2 class="section-title">Latest AI News Highlights</h2>
+    
+    {% if RSS_FEED_IDS['homepage_carousel'] %}
+    <div class="newsfeed-carousel" style="margin-bottom: 30px;">
+        <rssapp-carousel id="{{ RSS_FEED_IDS['homepage_carousel'] }}"></rssapp-carousel>
+        <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
+    </div>
+    {% else %}
+    <p style="text-align: center; margin-bottom: 30px;">Newsfeed highlights are currently unavailable. Visit the full newsfeed for the latest updates.</p>
+    {% endif %}
+    
+    <div class="text-center">
+      <a href="{{ SITEURL }}/newsfeed/" class="btn">Go to Full Newsfeed</a>
+    </div>
+  </div>
+</section>
+
 {% endblock content %} 

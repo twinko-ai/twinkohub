@@ -9,6 +9,11 @@ from pelican import main as pelican_main
 from pelican.server import ComplexHTTPRequestHandler, RootedHTTPServer
 from pelican.settings import DEFAULT_CONFIG, get_settings_from_file
 
+# --- Get the project root directory (assuming tasks.py is in the root) ---
+# PROJECT_ROOT = Path(__file__).parent
+# DOTENV_PATH = PROJECT_ROOT / ".env"
+# -------------------------------------------------------------------------
+
 OPEN_BROWSER_ON_SERVE = True
 SETTINGS_FILE_BASE = "pelicanconf.py"
 SETTINGS = {}
@@ -131,13 +136,7 @@ def livereload(c):
 def publish(c):
     """Publish to production via rsync"""
     pelican_run("-s {settings_publish}".format(**CONFIG))
-    c.run(
-        'rsync --delete --exclude ".DS_Store" -pthrvz -c '
-        '-e "ssh -p {ssh_port}" '
-        "{} {ssh_user}@{ssh_host}:{ssh_path}".format(
-            CONFIG["deploy_path"].rstrip("/") + "/", **CONFIG
-        )
-    )
+    print("Publish task needs rsync configuration in tasks.py or environment.")
 
 
 def pelican_run(cmd):

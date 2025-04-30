@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /blog/
+Allow: /newsletter/
+Allow: /newsfeed/
+Allow: /feeds/
+
+# Allow RSS feed discovery for blog and newsletter
+Allow: /feeds/blog.rss.xml
+Allow: /feeds/blog.atom.xml
+Allow: /feeds/newsletter.rss.xml
+Allow: /feeds/newsletter.atom.xml
+
+# Block RSS feed discovery for newsfeed
+Disallow: /feeds/newsfeed.rss.xml
+Disallow: /feeds/newsfeed.atom.xml 
