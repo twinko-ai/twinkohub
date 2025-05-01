@@ -26,9 +26,9 @@ THEME = 'themes/twinkohub'
 LOGO = '/theme/images/logo.png'
 LOGO_FOOTER = '/theme/images/logo-footer.png'
 
-# URL settings
-ARTICLE_URL = '{category}/{slug}.html'
-ARTICLE_SAVE_AS = '{category}/{slug}.html'
+# URL settings - updated to use path instead of category
+ARTICLE_URL = '{path}/{slug}.html'
+ARTICLE_SAVE_AS = '{path}/{slug}.html'
 PAGE_URL = '{slug}.html'
 PAGE_SAVE_AS = '{slug}.html'
 

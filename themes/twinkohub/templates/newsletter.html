@@ -13,7 +13,7 @@
         <div class="blog-list-view">
           {% set newsletter_articles = [] %}
           {% for article in articles %}
-            {% if article.category|string == 'newsletter' %}
+            {% if article.source_path.split('/')[-2] == 'newsletter' %}
               {% set _ = newsletter_articles.append(article) %}
             {% endif %}
           {% endfor %}

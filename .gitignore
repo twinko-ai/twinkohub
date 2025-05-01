@@ -80,7 +80,7 @@ htmlcov/
 *.tmp
 *.bak
 *.swp
-*~
+*~ 
 
 # Configuration files that might contain sensitive data
 config.py

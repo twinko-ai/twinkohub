@@ -22,7 +22,7 @@
     <div class="blog-list">
       {% set latest_articles = [] %}
       {% for article in articles %}
-        {% if article.category|string != 'newsletter' %}
+        {% if article.source_path.split('/')[-2] == 'blog' %}
           {% set _ = latest_articles.append(article) %}
         {% endif %}
       {% endfor %}
@@ -67,7 +67,7 @@
     <div class="blog-list">
       {% set latest_newsletters = [] %}
       {% for article in articles %}
-        {% if article.category|string == 'newsletter' %}
+        {% if article.source_path.split('/')[-2] == 'newsletter' %}
           {% set _ = latest_newsletters.append(article) %}
         {% endif %}
       {% endfor %}
