@@ -1,8 +1,7 @@
 Title: 具身智能AI革命：变革行业并重新定义工作
 Date: 2025-04-21 10:00
-Category: AI Agents
+Category: Twinko Weekly | AI Agents
 Tags: AI Agents, Generative AI, AI Safety, AI Ethics
-Slug: the-agentic-ai-revolution
 Author: Twinko AI
 Summary: 本周的新闻通讯侧重于人工智能代理在各个领域的迅速普及，从软件工程和客户服务到医疗保健和网络安全，同时还探讨了伴随这种技术转变而来的伦理和安全问题。
 

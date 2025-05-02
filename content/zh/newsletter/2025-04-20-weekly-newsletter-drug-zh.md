@@ -1,8 +1,7 @@
 Title: AI 驱动药物发现与开发领域重大交易和监管转变
 Date: 2025-04-20 18:00
-Category: 行业AI周刊｜药物发现与开发
+Category: 行业AI周刊 ｜ 药物发现与开发
 Tags: AI, 药物发现, 药物开发, 临床试验, 监管, 合作, 投资
-Slug: ai-drives-major-deals-and-regulatory-shifts-in-drug-discovery-development
 Author: Twinko AI
 Summary: AI 正在迅速改变药物发现与开发，其特点是巨额投资、战略合作、技术突破以及不断演变的监管环境，包括逐步淘汰传统的动物试验。
 

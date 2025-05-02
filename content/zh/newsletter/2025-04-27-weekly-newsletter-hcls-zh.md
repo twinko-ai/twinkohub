@@ -1,8 +1,7 @@
 Title: AI 在医疗健康和生命科学领域的影响加速扩大
 Date: 2025-04-28 10:00
-Category: 行业AI周刊｜生命健康
-Tags: AI, 医疗健康, 生命科学, 药物发现, 临床AI, 监管, 患者护理, 运营
-Slug: ais-broad-impact-accelerates-across-healthcare-and-life-sciences
+Category: 行业AI周刊｜医疗健康
+Tags: AI, 医疗健康, 生命科学
 Author: Twinko AI
 Summary: 人工智能在医疗健康和生命科学领域持续快速融合，推动了从药物发现、临床工作流程到运营效率和患者护理的创新，同时也引发了关于监管和应用挑战的关键讨论。
 

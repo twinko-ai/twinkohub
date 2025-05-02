@@ -1,6 +1,6 @@
-Title: AI Drives Major Deals and Regulatory Shifts in Drug Discovery & Development
+Title: AI in Drug Discovery and Development] AI Drives Major Deals and Regulatory Shifts in Drug Discovery & Development
 Date: 2025-04-20 18:00
-Category: AI in Drug Discovery and Development
+Category: Twinko Weekly | AI in Drug Discovery and Development
 Tags: AI, Drug Discovery, Drug Development, Clinical Trials, Regulation, Partnerships, Investment
 Slug: ai-drives-major-deals-and-regulatory-shifts-in-drug-discovery-development
 Author: Twinko AI

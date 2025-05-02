@@ -1,6 +1,6 @@
 Title: AI Agents Redefine Industries, Ethical Concerns Rise, and Global Competition Intensifies
 Date: 2025-04-27 23:59
-Category: AI Agents
+Category: Twinko Weekly | AI Agents
 Tags: AI Agents, Generative AI, Ethics, Global Competition
 Slug: ai-agents-redefine-industries-ethical-concerns-rise-and-global-competition-intensifies
 Author: Twinko AI

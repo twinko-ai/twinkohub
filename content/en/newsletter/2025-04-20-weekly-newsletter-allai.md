@@ -1,6 +1,6 @@
 Title: The Agentic AI Revolution: Transforming Industries and Redefining Work
 Date: 2025-04-21 10:00
-Category: AI Agents
+Category: Twinko Weekly | AI Agents
 Tags: AI Agents, Generative AI, AI Safety, AI Ethics
 Slug: the-agentic-ai-revolution
 Author: Twinko AI

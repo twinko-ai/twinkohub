@@ -1,6 +1,6 @@
 Title: AI Reshapes Drug Discovery Landscape Amidst Broader Healthcare Integration
 Date: 2025-04-28 10:00
-Category: AI in Drug Discovery and Development
+Category: Twinko Weekly | AI in Drug Discovery and Development
 Tags: AI, Drug Discovery, Drug Development, Healthcare, Clinical Trials, Regulation, Patient Sentiment, Technology, Investment, Oncology
 Slug: ai-reshapes-drug-discovery-landscape-amidst-broader-healthcare-integration
 Author: Twinko AI

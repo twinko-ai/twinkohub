@@ -24,6 +24,109 @@
   {% block extra_head %}{% endblock extra_head %}
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.27.20/tocbot.css">
+  
+  <style>
+    /* Dropdown menu styles */
+    #nav ul li {
+      position: relative;
+    }
+    
+    #nav ul li .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      min-width: 180px;
+      z-index: 1000;
+      border-radius: 6px;
+      padding: 8px 0;
+    }
+    
+    #nav ul li:hover .dropdown {
+      display: block;
+    }
+    
+    #nav ul li .dropdown li {
+      display: block;
+      width: 100%;
+    }
+    
+    #nav ul li .dropdown li a {
+      padding: 8px 16px;
+      display: block;
+      color: #333;
+      font-size: 0.95em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    
+    #nav ul li .dropdown li a:hover {
+      background-color: #f6f6f6;
+    }
+    
+    /* Dropdown indicator */
+    .dropdown-toggle:after {
+      content: "▼";
+      display: inline-block;
+      margin-left: 5px;
+      font-size: 8px;
+      vertical-align: middle;
+    }
+    
+    /* Non-clickable menu item style */
+    .dropdown-label {
+      cursor: default;
+      user-select: none;
+    }
+    
+    /* Style dropdown-label like other nav links for consistency */
+    .dropdown-label {
+      color: var(--text-color);
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 5px;
+    }
+    
+    .dropdown-label::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+    
+    .dropdown-label.active {
+      color: var(--primary-color);
+    }
+    
+    .dropdown-label.active::after {
+      width: 100%;
+    }
+    
+    @media (max-width: 768px) {
+      #nav ul li .dropdown {
+        position: static;
+        box-shadow: none;
+        display: none;
+        background-color: rgba(0,0,0,0.05);
+        border-radius: 0;
+        padding: 0;
+      }
+      
+      #nav.mobile-open ul li .dropdown {
+        display: block;
+      }
+      
+      #nav ul li .dropdown li a {
+        padding-left: 30px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -40,8 +143,13 @@
         <ul>
           <li><a href="{{ SITEURL }}/" {% if output_file == "index.html" %}class="active"{% endif %}>Home</a></li>
           <li><a href="{{ SITEURL }}/newsfeed/" {% if output_file.startswith('newsfeed/') %}class="active"{% endif %}>Newsfeed</a></li>
-          <li><a href="{{ SITEURL }}/newsletter/" {% if output_file.startswith('newsletter/') %}class="active"{% endif %}>Newsletter</a></li>
-          <li><a href="{{ SITEURL }}/blog/" {% if output_file.startswith('blog/') or output_file.startswith('category/') or output_file.startswith('tag/') %}class="active"{% endif %}>Blog</a></li>
+          <li>
+            <span class="dropdown-toggle dropdown-label {% if output_file.startswith('newsletter/') or output_file.startswith('en/newsletter/') or (category and category.name == 'Twinko Weekly') %}active{% endif %}">Newsletter</span>
+            <ul class="dropdown">
+              <li><a href="{{ SITEURL }}/category/twinko-weekly/">Twinko Weekly</a></li>
+            </ul>
+          </li>
+          <li><a href="{{ SITEURL }}/blog/" {% if output_file.startswith('blog/') or (output_file.startswith('category/') and not (category and category.name == 'Twinko Weekly')) or output_file.startswith('tag/') %}class="active"{% endif %}>Blog</a></li>
         </ul>
       </nav>
       <a href="https://www.twinko.ai/subscribe" class="btn btn-primary" target="_blank">Subscribe</a>
@@ -101,6 +209,21 @@
 <script>
   document.querySelector('.mobile-menu-button').addEventListener('click', function() {
     document.getElementById('nav').classList.toggle('mobile-open');
+  });
+  
+  // Mobile dropdown handling
+  document.addEventListener('DOMContentLoaded', function() {
+    var dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    
+    for (var i = 0; i < dropdownToggles.length; i++) {
+      dropdownToggles[i].addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          this.nextElementSibling.style.display = 
+            this.nextElementSibling.style.display === 'block' ? 'none' : 'block';
+        }
+      });
+    }
   });
 </script>
 

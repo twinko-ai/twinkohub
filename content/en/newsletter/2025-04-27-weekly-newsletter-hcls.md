@@ -1,6 +1,6 @@
 Title: AI's Broad Impact Accelerates Across Healthcare and Life Sciences
 Date: 2025-04-28 10:00
-Category: AI in Healthcare and Life Science
+Category: Twinko Weekly | AI in Healthcare and Life Science
 Tags: AI, Healthcare, Life Sciences, Drug Discovery, Clinical AI, Regulation, Patient Care, Operations
 Slug: ais-broad-impact-accelerates-across-healthcare-and-life-sciences
 Author: Twinko AI

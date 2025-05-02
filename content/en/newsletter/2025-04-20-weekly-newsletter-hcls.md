@@ -1,6 +1,6 @@
 Title: AI Revolution in Healthcare: From Drug Discovery to Patient Care, Ethical Considerations Emerge
 Date: 2025-04-20 23:59
-Category: AI in Healthcare and Life Science
+Category: Twinko Weekly | AI in Healthcare and Life Science
 Tags: AI, Healthcare, Drug Discovery, Ethics, Regulation
 Slug: ai-revolution-in-healthcare-drug-discovery-patient-care-ethics
 Author: Twinko AI

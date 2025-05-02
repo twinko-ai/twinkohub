@@ -2,7 +2,6 @@ Title: 人工智能重塑药物发现格局，加速融入更广泛的医疗健�
 Date: 2025-04-28 10:00
 Category: 行业AI周刊｜药物发现与开发
 Tags: 人工智能, 药物发现, 药物开发, 医疗健康, 临床试验, 监管, 患者情绪, 技术, 投资, 肿瘤学
-Slug: ai-reshapes-drug-discovery-landscape-amidst-broader-healthcare-integration
 Author: Twinko AI
 Summary: 人工智能正在药物发现和开发中展现出切实的影响，尤其是在肿瘤学领域，同时也提高了更广泛的医疗健康生态系统的效率，尽管其应用面临患者、医生和监管方面的考量。
 

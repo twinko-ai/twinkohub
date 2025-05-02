@@ -1,6 +1,6 @@
 Title: 医疗健康领域的人工智能革命：从药物发现到患者护理，伦理考量浮出水面
 Date: 2025-04-20 23:59
-Category: 行业AI周刊｜生命健康
+Category: 行业AI周刊｜医疗健康
 Tags: 人工智能, 医疗健康, 药物发现, 伦理, 监管
 Slug: ai-revolution-in-healthcare-drug-discovery-patient-care-ethics
 Author: Twinko AI

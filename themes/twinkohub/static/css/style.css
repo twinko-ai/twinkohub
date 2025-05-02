@@ -31,6 +31,42 @@ body {
   padding: 0 20px;
 }
 
+/* Filter container and buttons styles - for subcategory filtering */
+.filter-container {
+  margin-bottom: 30px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.filter-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-button {
+  padding: 8px 16px;
+  background-color: var(--secondary-bg);
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.filter-button:hover {
+  background-color: rgba(46, 31, 67, 0.1);
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.filter-button.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
 a {
   color: var(--primary-color);
   text-decoration: none;
@@ -814,6 +850,12 @@ img {
 
 .white-filter {
   filter: brightness(0) invert(1);
+}
+
+.full-width {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .btn {

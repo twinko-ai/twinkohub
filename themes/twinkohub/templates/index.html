@@ -90,6 +90,11 @@
           </div>
           <div class="blog-card-meta">
             <span>{{ article.locale_date }}</span>
+            {% if article.main_category %}
+              <span> • {{ article.main_category }}{% if article.subcategory %} | {{ article.subcategory }}{% endif %}</span>
+            {% elif article.category %}
+              <span> • {{ article.category }}</span>
+            {% endif %}
           </div>
         </div>
       </div>

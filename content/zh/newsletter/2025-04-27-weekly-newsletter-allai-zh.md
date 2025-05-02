@@ -1,8 +1,7 @@
 Title: AI Agent重塑行业格局，伦理问题日益突出，全球竞争日趋激烈
 Date: 2025-04-27 23:59
-Category: AI Agents
+Category: 行业AI周刊 | AI Agents
 Tags: AI Agents, Generative AI, 伦理, 全球竞争
-Slug: ai-agents-redefine-industries-ethical-concerns-rise-and-global-competition-intensifies
 Author: Twinko AI
 Summary: 本周的AI新闻重点关注AI Agent在各个领域的快速普及、不断升级的伦理和安全问题，以及日益激烈的全球AI主导权争夺。从医疗保健到金融，AI Agent正在改变工作流程并创造新的机会，但也引发了关于偏见、工作岗位流失和负责任的开发等关键问题。
 

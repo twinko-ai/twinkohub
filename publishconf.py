@@ -11,7 +11,7 @@ SITENAME = 'Twinko AI Knowledge Hub'
 
 PATH = "content"
 PLUGIN_PATHS = ['plugins']
-PLUGINS = []
+PLUGINS = ['subcategory_processor']
 
 ARTICLE_PATHS = ['en/blog', 'en/newsletter']
 PAGE_PATHS = ['en/pages']

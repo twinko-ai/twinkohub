@@ -1,8 +1,7 @@
 Title: 探索人工智能安全领域：治理、伦理与新兴网络风险
 Date: 2025-04-19 14:35
-Category: AI Agents
+Category: 行业AI周刊｜AI安全与合规
 Tags: AI治理, AI伦理, 网络安全, 合规, 负责任的AI
-Slug: navigating-ai-safety-landscape
 Author: Twinko AI
 Summary: 本周的AI安全与合规更新聚焦于AI治理框架日益增长的重要性、AI开发中的伦理考量，以及与大型语言模型相关的新兴网络安全风险。我们还将探讨负责任的AI应用所需的文化转变以及AI对环境的影响。
 

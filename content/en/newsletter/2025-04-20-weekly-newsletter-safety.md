@@ -1,6 +1,6 @@
 Title: Navigating the AI Safety Landscape: Governance, Ethics, and Emerging Cyber Risks
 Date: 2025-04-19 14:35
-Category: AI Agents
+Category: Twinko Weekly | AI Safety and Compliance
 Tags: AI Governance, AI Ethics, Cybersecurity, Compliance, Responsible AI
 Slug: navigating-ai-safety-landscape
 Author: Twinko AI
