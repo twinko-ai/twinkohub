@@ -5,12 +5,26 @@
 [build.environment]
   PYTHON_VERSION = "3.11"
 
-# Context-specific commands removed as they are identical to the main build command.
-# Netlify will inherit the command from [build] for production, deploy-preview, and branch-deploy.
+# Force HTTPS for all requests
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
 
-# Redirect rule for Single Page Application (SPA) behavior
+# Custom domain settings
+[context.production]
+  environment = { SITEURL = "https://hub.twinko.ai" }
+
+# Redirect netlify.app to custom domain
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  from = "https://twinkohub.netlify.app/*"
+  to = "https://hub.twinko.ai/:splat"
+  status = 301
+  force = true
+
+# Redirect for SPA behavior (only if needed)
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
 

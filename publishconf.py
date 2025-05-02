@@ -106,7 +106,7 @@ RSS_FEED_IDS = {
 }
 
 # --- Production-specific settings --- 
-SITEURL = 'https://twinkohub.netlify.app'
+SITEURL = 'https://hub.twinko.ai'
 RELATIVE_URLS = False
 
 # Feed overrides (commented out to use above settings)
