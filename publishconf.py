@@ -4,15 +4,10 @@
 # This file contains ALL settings for the PRODUCTION build
 import datetime
 import os
-from dotenv import load_dotenv
 
-# Load .env file
-load_dotenv()
-
-# Import base settings
-import sys
-sys.path.append(os.curdir)
-from pelicanconf import *
+# Basic Settings
+AUTHOR = 'Twinko AI'
+SITENAME = 'Twinko AI Knowledge Hub'
 
 # Detect environment
 PELICAN_ENV = os.getenv('PELICAN_ENV', 'production')
@@ -21,13 +16,13 @@ PELICAN_ENV = os.getenv('PELICAN_ENV', 'production')
 if PELICAN_ENV == 'production':
     SITEURL = 'https://hub.twinko.ai'
 elif PELICAN_ENV == 'preview':
-    # For Netlify deploy previews, use the deploy preview URL
+    # For Netlify deploy previews
     if os.getenv('DEPLOY_PRIME_URL'):
         SITEURL = os.getenv('DEPLOY_PRIME_URL')
     else:
         SITEURL = 'https://preview.hub.twinko.ai'
 elif PELICAN_ENV == 'staging':
-    # For branch deploys, use the branch deploy URL
+    # For branch deploys
     if os.getenv('DEPLOY_URL'):
         SITEURL = os.getenv('DEPLOY_URL')
     else:
@@ -39,23 +34,10 @@ else:
 # Always use absolute URLs in production environments
 RELATIVE_URLS = False
 
-# Feed overrides (commented out to use settings from pelicanconf.py)
-# FEED_ALL_ATOM = 'feeds/all.atom.xml'
-# CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
-
 # Delete output directory before generating new files
 DELETE_OUTPUT_DIRECTORY = True
 
-# Enable Google Analytics only in production
-if PELICAN_ENV == 'production':
-    GOOGLE_ANALYTICS = os.getenv('GOOGLE_ANALYTICS')
-else:
-    GOOGLE_ANALYTICS = None
-
-# --- Settings from pelicanconf.py --- 
-AUTHOR = 'Twinko AI'
-SITENAME = 'Twinko AI Knowledge Hub'
-
+# Path Configuration
 PATH = "content"
 PLUGIN_PATHS = ['plugins']
 PLUGINS = ['subcategory_processor']
@@ -65,7 +47,6 @@ PAGE_PATHS = ['en/pages']
 STATIC_PATHS = ['images', 'extra']
 
 TIMEZONE = 'America/New_York'
-
 DEFAULT_LANG = 'en'
 THEME = 'themes/twinkohub'
 
@@ -90,14 +71,15 @@ INDEX_SAVE_AS = 'index.html'
 
 # Blog and Newsletter settings
 DIRECT_TEMPLATES = [
-    'index', 'categories', 'archives', 'tags', 'authors', 'blog', 'newsletter', 'newsfeed' # <<< Re-added newsfeed
+    'index', 'categories', 'archives', 'tags', 'authors', 
+    'blog', 'newsletter', 'newsfeed'
 ]
 BLOG_URL = 'blog/'
 BLOG_SAVE_AS = 'blog/index.html'
 NEWSLETTER_URL = 'newsletter/'
 NEWSLETTER_SAVE_AS = 'newsletter/index.html'
-NEWSFEED_URL = 'newsfeed/' # <<< Added newsfeed URL/Save AS
-NEWSFEED_SAVE_AS = 'newsfeed/index.html' # <<< Added newsfeed URL/Save AS
+NEWSFEED_URL = 'newsfeed/'
+NEWSFEED_SAVE_AS = 'newsfeed/index.html'
 
 # Social links for footer
 SOCIAL = (
@@ -114,7 +96,7 @@ SUMMARY_MAX_LENGTH = 150
 DEFAULT_ARTICLE_IMAGE = 'theme/images/default-article.jpg'
 COPYRIGHT_YEAR = datetime.date.today().year
 
-# Markdown extensions (assuming these were implicitly in pelicanconf)
+# Markdown extensions for proper heading IDs and TOC
 MARKDOWN = {
     'extension_configs': {
         'markdown.extensions.codehilite': {'css_class': 'highlight'},
@@ -128,7 +110,7 @@ MARKDOWN = {
     'output_format': 'html5',
 }
 
-# Feed settings (matching pelicanconf for consistency)
+# Feed settings
 FEED_ALL_ATOM = None
 FEED_ALL_RSS = None
 CATEGORY_FEED_ATOM = None
@@ -142,7 +124,7 @@ NEWSLETTER_FEED_RSS = 'feeds/newsletter.rss.xml'
 BLOG_FEED_ATOM = 'feeds/blog.atom.xml'
 BLOG_FEED_RSS = 'feeds/blog.rss.xml'
 
-# RSS Feed Widget IDs - Use environment variables (REQUIRED)
+# RSS Feed Widget IDs - Use environment variables
 RSS_FEED_IDS = {
     'everything': os.getenv('RSS_FEED_ID_EVERYTHING'),
     'healthcare': os.getenv('RSS_FEED_ID_HEALTHCARE'),
@@ -151,3 +133,9 @@ RSS_FEED_IDS = {
     'safety': os.getenv('RSS_FEED_ID_SAFETY'),
     'homepage_carousel': os.getenv('RSS_FEED_ID_HOMEPAGE_CAROUSEL')
 }
+
+# Enable Google Analytics only in production
+if PELICAN_ENV == 'production':
+    GOOGLE_ANALYTICS = os.getenv('GOOGLE_ANALYTICS')
+else:
+    GOOGLE_ANALYTICS = None
