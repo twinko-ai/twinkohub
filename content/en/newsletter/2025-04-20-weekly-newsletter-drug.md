@@ -2,8 +2,8 @@ Title: AI in Drug Discovery and Development] AI Drives Major Deals and Regulator
 Date: 2025-04-20 18:00
 Category: Twinko Weekly | AI in Drug Discovery and Development
 Tags: AI, Drug Discovery, Drug Development, Clinical Trials, Regulation, Partnerships, Investment
-Slug: ai-drives-major-deals-and-regulatory-shifts-in-drug-discovery-development
 Author: Twinko AI
+Image: /images/newsletter/2025-04-20-weekly-newsletter-drug_1.png
 Summary: AI is rapidly transforming drug discovery and development, marked by significant investment, strategic partnerships, technological breakthroughs, and evolving regulatory landscapes, including a move away from traditional animal testing.
 
 # AI Drives Major Deals and Regulatory Shifts in Drug Discovery & Development
@@ -70,7 +70,7 @@ The market for AI/ML and computational tools in RNA research and therapeutics is
 The global biosimulation market is projected for substantial growth (15-20% CAGR by 2028), largely fueled by the increasing integration of AI and rising demand for drug discovery solutions. Biosimulation, enhanced by AI, allows for complex biological processes and drug interactions to be modeled *in silico*, supporting everything from target validation to clinical trial design and contributing to the efficiency gains seen in R&D.
 [Read more →](https://www.openpr.com/news/3968522/global-biosimulation-market-size-share-and-cagr-growth-driven)
 
-### Trinity Life Sciences’ AI Algorithm Accurately Predicts Revenue Outcomes for Over 90% of U.S. Drug Launches Far Exceeding Wall Street Analyst Attempts
+### Trinity Life Sciences' AI Algorithm Accurately Predicts Revenue Outcomes for Over 90% of U.S. Drug Launches Far Exceeding Wall Street Analyst Attempts
 
 **Date**: 2025-04-17 10:45:37 UTC-05:00 **Source**: Businesswire
 Trinity Life Sciences has developed an AI algorithm demonstrating over 90% accuracy in predicting revenue outcomes for U.S. drug launches, significantly outperforming traditional analyst predictions. This highlights AI's potential beyond R&D, offering valuable insights for commercial strategy, market access planning, and investment decisions within the pharmaceutical industry.

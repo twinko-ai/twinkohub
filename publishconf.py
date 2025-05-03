@@ -3,7 +3,54 @@
 
 # This file contains ALL settings for the PRODUCTION build
 import datetime
-import os # <<< ADDED for os.getenv
+import os
+from dotenv import load_dotenv
+
+# Load .env file
+load_dotenv()
+
+# Import base settings
+import sys
+sys.path.append(os.curdir)
+from pelicanconf import *
+
+# Detect environment
+PELICAN_ENV = os.getenv('PELICAN_ENV', 'production')
+
+# Environment-specific settings
+if PELICAN_ENV == 'production':
+    SITEURL = 'https://hub.twinko.ai'
+elif PELICAN_ENV == 'preview':
+    # For Netlify deploy previews, use the deploy preview URL
+    if os.getenv('DEPLOY_PRIME_URL'):
+        SITEURL = os.getenv('DEPLOY_PRIME_URL')
+    else:
+        SITEURL = 'https://preview.hub.twinko.ai'
+elif PELICAN_ENV == 'staging':
+    # For branch deploys, use the branch deploy URL
+    if os.getenv('DEPLOY_URL'):
+        SITEURL = os.getenv('DEPLOY_URL')
+    else:
+        SITEURL = 'https://staging.hub.twinko.ai'
+else:
+    # Fallback to production
+    SITEURL = 'https://hub.twinko.ai'
+
+# Always use absolute URLs in production environments
+RELATIVE_URLS = False
+
+# Feed overrides (commented out to use settings from pelicanconf.py)
+# FEED_ALL_ATOM = 'feeds/all.atom.xml'
+# CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
+
+# Delete output directory before generating new files
+DELETE_OUTPUT_DIRECTORY = True
+
+# Enable Google Analytics only in production
+if PELICAN_ENV == 'production':
+    GOOGLE_ANALYTICS = os.getenv('GOOGLE_ANALYTICS')
+else:
+    GOOGLE_ANALYTICS = None
 
 # --- Settings from pelicanconf.py --- 
 AUTHOR = 'Twinko AI'
@@ -104,13 +151,3 @@ RSS_FEED_IDS = {
     'safety': os.getenv('RSS_FEED_ID_SAFETY'),
     'homepage_carousel': os.getenv('RSS_FEED_ID_HOMEPAGE_CAROUSEL')
 }
-
-# --- Production-specific settings --- 
-SITEURL = 'https://hub.twinko.ai'
-RELATIVE_URLS = False
-
-# Feed overrides (commented out to use above settings)
-# FEED_ALL_ATOM = 'feeds/all.atom.xml'
-# CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
-
-DELETE_OUTPUT_DIRECTORY = True

@@ -1,6 +1,6 @@
 [build]
+  command = "pelican content -s publishconf.py"
   publish = "output"
-  command = "python -m pelican content -o output -s publishconf.py"
 
 [build.environment]
   PYTHON_VERSION = "3.11"
@@ -13,9 +13,15 @@
 
 # Custom domain settings
 [context.production]
-  environment = { SITEURL = "https://hub.twinko.ai" }
+  environment = { SITEURL = "https://hub.twinko.ai", PELICAN_ENV = "production" }
 
-# Redirect netlify.app to custom domain
+[context.deploy-preview]
+  environment = { PELICAN_ENV = "preview" }
+
+[context.branch-deploy]
+  environment = { PELICAN_ENV = "staging" }
+
+# Redirect from Netlify subdomain to your custom domain (optional)
 [[redirects]]
   from = "https://twinkohub.netlify.app/*"
   to = "https://hub.twinko.ai/:splat"

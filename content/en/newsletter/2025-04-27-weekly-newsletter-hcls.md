@@ -1,8 +1,8 @@
+Image: /images/newsletter/2025-04-27-weekly-newsletter-hcls_1.png
 Title: AI's Broad Impact Accelerates Across Healthcare and Life Sciences
 Date: 2025-04-28 10:00
 Category: Twinko Weekly | AI in Healthcare and Life Science
 Tags: AI, Healthcare, Life Sciences, Drug Discovery, Clinical AI, Regulation, Patient Care, Operations
-Slug: ais-broad-impact-accelerates-across-healthcare-and-life-sciences
 Author: Twinko AI
 Summary: Artificial intelligence continues its rapid integration across the healthcare and life sciences sectors, driving innovation from drug discovery and clinical workflows to operational efficiency and patient care, while also prompting crucial discussions around regulation and adoption challenges.
 
@@ -64,13 +64,13 @@ Suki Assistant has introduced Ambient Order Staging, an AI-powered feature allow
 Recent surveys reveal mixed patient sentiment regarding AI in healthcare. While a large survey showed cautious support for AI in screening mammography, another indicated that many cancer patients are afraid of AI in healthcare settings, despite acknowledging potential benefits. This highlights the critical need for transparent communication and building trust as AI is integrated into patient care.
 [Read more →](https://healthcare-in-europe.com/en/news/patients-support-ai-mammography.html) / [Read more →](https://www.hematologyadvisor.com/news/many-cancer-patients-afraid-of-ai-in-health-care-survey-suggests/)
 
-### AdvaMed Releases “AI Policy Roadmap” to Guide Congress and Federal Agencies
+### AdvaMed Releases "AI Policy Roadmap" to Guide Congress and Federal Agencies
 
 **Date**: 2025-04-22 18:52:59 UTC-05:00  **Source**: Advamed
 AdvaMed, the Medtech Association, has published an "AI Policy Roadmap" offering detailed guidance to Congress and federal agencies on promoting AI-enabled medical technologies. This initiative underscores the industry's proactive engagement in shaping the regulatory landscape to facilitate the responsible development and adoption of AI in healthcare.
 [Read more →](https://www.advamed.org/industry-updates/news/advamed-releases-ai-policy-roadmap-to-guide-congress-and-federal-agencies/)
 
-### There’s a Gap Between Healthcare Leaders’ AI Confidence and Their Ability to Scale
+### There's a Gap Between Healthcare Leaders' AI Confidence and Their Ability to Scale
 
 **Date**: 2025-04-23 20:44:48 UTC-05:00  **Source**: Medcitynews
 New research suggests a disconnect between healthcare leaders' confidence in their AI governance frameworks and their actual ability to scale AI solutions. While many feel confident in oversight, far fewer have the necessary scalable infrastructure in place, pointing to a critical challenge in moving from pilot projects to widespread, impactful AI deployment.

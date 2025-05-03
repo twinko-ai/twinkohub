@@ -1,8 +1,8 @@
+Image: /images/newsletter/2025-04-20-weekly-newsletter-allai_1.png
 Title: The Agentic AI Revolution: Transforming Industries and Redefining Work
 Date: 2025-04-21 10:00
 Category: Twinko Weekly | AI Agents
 Tags: AI Agents, Generative AI, AI Safety, AI Ethics
-Slug: the-agentic-ai-revolution
 Author: Twinko AI
 Summary: This week's newsletter focuses on the rapid proliferation of AI agents across various sectors, from software engineering and customer service to healthcare and cybersecurity, while also addressing the ethical and safety considerations that accompany this technological shift.
 
@@ -34,7 +34,7 @@ Amazon's new agentic AI system, "Nova Act," is poised to transform how individua
 Google's announcements at Cloud Next 2025 demonstrate a strategic commitment to an AI-driven future centered on enabling and orchestrating agentic AI systems. This comprehensive approach positions Google as a major player in the development and deployment of AI agents, potentially influencing the direction of the industry.  
 [Read more →](https://www.forbes.com/sites/janakirammsv/2025/04/14/google-unveils-the-most-comprehensive-agent-strategy-at-cloud-next-2025/)
 
-### EU bans the bots: Commission bars ‘AI agents’ from joining online meetings
+### EU bans the bots: Commission bars 'AI agents' from joining online meetings
 
 **Date**: 2025-04-16  **Source**: Politico
 The European Commission has banned the use of AI agents in online meetings, citing concerns about security and data privacy. This decision reflects growing apprehension about the potential risks associated with AI in professional settings and could set a precedent for future regulations.  
@@ -58,7 +58,7 @@ Thousands of physicians are utilizing ambient listening AI to improve patient ca
 Virtue AI secured $30 million in funding to expand its red teaming and AI guardrails, indicating a growing investment in AI safety measures. This funding round underscores the importance of proactively addressing potential risks associated with AI development and deployment.  
 [Read more →](https://www.axios.com/2025/04/15/virtue-ai-lightspeed-walden-catalyst-funding)
 
-### AI Will Replace 80% of Project Managers’ Work Within 5 Years, And That’s a Good Thing, Says Easy Redmine Founder
+### AI Will Replace 80% of Project Managers' Work Within 5 Years, And That's a Good Thing, Says Easy Redmine Founder
 
 **Date**: 2025-04-14  **Source**: Usatoday
 The founder of Easy Redmine predicts that AI will automate 80% of project management tasks within five years, suggesting a significant shift in the project management profession. This automation could free up project managers to focus on more strategic and creative aspects of their roles.  
@@ -67,11 +67,11 @@ The founder of Easy Redmine predicts that AI will automate 80% of project manage
 ### Why AI At Work Needs Humans At The Wheel
 
 **Date**: 2025-04-13  **Source**: Forbes
-AI is changing how we work, but replacing people isn’t the strategy. It’s about redefining work so humans stay essential, empowered, and in control.  
+AI is changing how we work, but replacing people isn't the strategy. It's about redefining work so humans stay essential, empowered, and in control.  
 [Read more →](https://www.forbes.com/sites/niritcohen/2025/04/13/why-ai-at-work-needs-humans-at-the-wheel/)
 
 ### California Nuclear Plant Integrates AI for Efficiency
 
 **Date**: 2025-04-13  **Source**: Oilprice
-California’s last nuclear plant is implementing artificial intelligence to enhance efficiency in document retrieval, raising concerns among lawmakers about the potential expansion of automation in the nuclear energy sector.  
+California's last nuclear plant is implementing artificial intelligence to enhance efficiency in document retrieval, raising concerns among lawmakers about the potential expansion of automation in the nuclear energy sector.  
 [Read more →](https://oilprice.com/Alternative-Energy/Nuclear-Power/California-Nuclear-Plant-Integrates-AI-for-Efficiency.html)

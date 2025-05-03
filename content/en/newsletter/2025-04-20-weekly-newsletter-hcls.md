@@ -1,10 +1,10 @@
+Image: /images/newsletter/2025-04-20-weekly-newsletter-hcls_1.png
 Title: AI Revolution in Healthcare: From Drug Discovery to Patient Care, Ethical Considerations Emerge
 Date: 2025-04-20 23:59
 Category: Twinko Weekly | AI in Healthcare and Life Science
 Tags: AI, Healthcare, Drug Discovery, Ethics, Regulation
-Slug: ai-revolution-in-healthcare-drug-discovery-patient-care-ethics
 Author: Twinko AI
-Summary: This week's healthcare AI news highlights rapid advancements in drug discovery, personalized medicine, and patient care, alongside growing concerns about ethical implications, data bias, and the need for precise regulation.
+Summary: This week's healthcare AI news highlights rapid advancements in drug discovery, pesrsonalized medicine, and patient care, alongside growing concerns about ethical implications, data bias, and the need for precise regulation.
 
 # AI Revolution in Healthcare: From Drug Discovery to Patient Care, Ethical Considerations Emerge
 
@@ -56,7 +56,7 @@ Congressman Mike Kennedy calls for precise regulation of AI in healthcare to bal
 Assort Health has secured $26 million in funding to expand its specialty-specific generative AI platform for managing patient phone calls. This investment highlights the growing demand for AI solutions that streamline administrative tasks and improve patient communication in healthcare. The platform's focus on specialty-specific needs underscores the importance of tailored AI applications to address the unique challenges of different medical fields.  
 [Read more →](https://www.businesswire.com/news/home/20250415822677/en/Assort-Health-Secures-$26-Million-in-Funding-to-Expand-Specialty-Specific-Generative-AI-Platform-for-Managing-Patient-Phone-Calls)
 
-### Trinity Life Sciences’ AI Algorithm Accurately Predicts Revenue Outcomes for Drug Launches
+### Trinity Life Sciences' AI Algorithm Accurately Predicts Revenue Outcomes for Drug Launches
 
 **Date**: 2025-04-17  **Source**: Businesswire  
 Trinity Life Sciences introduced an AI algorithm that accurately predicts revenue outcomes for over 90% of U.S. drug launches, surpassing Wall Street analyst attempts. This demonstrates the potential of AI to provide valuable insights for pharmaceutical companies in making strategic decisions about drug development and commercialization. The algorithm's accuracy highlights the increasing sophistication and reliability of AI-driven predictive analytics in the life sciences industry.  
