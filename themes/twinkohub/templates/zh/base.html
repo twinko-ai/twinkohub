@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ DEFAULT_LANG }}">
+<html lang="zh">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -110,68 +110,21 @@
     
     /* Language switcher style */
     .language-switcher {
-      position: absolute;
-      top: 50%;
+      position: fixed;
+      top: 20px;
       right: 20px;
-      transform: translateY(-50%);
       z-index: 1000;
-      background-color: rgba(255, 255, 255, 0.95);
-      border-radius: 50%;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      transition: all 0.2s ease;
-      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 5px 10px;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
     
-    .language-switcher:hover {
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-      transform: translateY(-50%) scale(1.05);
-    }
-    
-    .language-icon {
-      font-size: 18px;
+    .lang-link {
       color: var(--primary-color);
-    }
-    
-    .language-options {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      margin-top: 8px;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      display: none;
-      overflow: hidden;
-      min-width: 120px;
-    }
-    
-    .language-switcher.open .language-options {
-      display: block;
-    }
-    
-    .lang-option {
-      padding: 10px 15px;
-      display: flex;
-      align-items: center;
-      color: #333;
       text-decoration: none;
-      font-size: 0.9em;
-      transition: background-color 0.2s ease;
-    }
-    
-    .lang-option:hover {
-      background-color: #f5f5f5;
-    }
-    
-    .lang-option.active {
-      background-color: #f0f8ff;
-      color: var(--primary-color);
       font-weight: 500;
+      font-size: 0.9em;
     }
     
     @media (max-width: 768px) {
@@ -193,16 +146,8 @@
       }
       
       .language-switcher {
-        position: fixed;
-        top: 15px;
-        right: 15px;
-        transform: none;
-        width: 32px;
-        height: 32px;
-      }
-      
-      .language-switcher:hover {
-        transform: scale(1.05);
+        top: 10px;
+        right: 10px;
       }
     }
   </style>
@@ -216,64 +161,34 @@
         <a href="{{ SITEURL }}/" class="logo">
           <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/logo.png" alt="{{ SITENAME }}">
         </a>
-        <div class="logo-text">Knowledge Hub</div>
+        <div class="logo-text">知识中心</div>
       </div>
       <nav id="nav">
         <ul>
-          <li><a href="{{ SITEURL }}/" {% if output_file == "index.html" %}class="active"{% endif %}>Home</a></li>
-          <li><a href="{{ SITEURL }}/newsfeed/" {% if output_file.startswith('newsfeed/') %}class="active"{% endif %}>Newsfeed</a></li>
+          <li><a href="{{ SITEURL }}/" {% if output_file == "zh/index.html" %}class="active"{% endif %}>首页</a></li>
+          <li><a href="{{ SITEURL }}/zh/newsfeed/" {% if output_file.startswith('zh/newsfeed/') %}class="active"{% endif %}>新闻动态</a></li>
           <li>
-            <span class="dropdown-toggle dropdown-label {% if output_file.startswith('newsletter/') or (category and category.slug == 'twinko-weekly') %}active{% endif %}">Newsletter</span>
+            <span class="dropdown-toggle dropdown-label {% if output_file.startswith('zh/newsletter/') or (category and category.slug == 'twinko-weekly') %}active{% endif %}">周报</span>
             <ul class="dropdown">
-              <li><a href="{{ SITEURL }}/category/twinko-weekly/">Twinko Weekly</a></li>
+              <li><a href="{{ SITEURL }}/zh/category/twinko-weekly/">行业AI周刊</a></li>
             </ul>
           </li>
-          <li><a href="{{ SITEURL }}/blog/" {% if output_file.startswith('blog/') or (output_file.startswith('category/') and not (category and category.slug == 'twinko-weekly')) or output_file.startswith('tag/') %}class="active"{% endif %}>Blog</a></li>
+          <li><a href="{{ SITEURL }}/zh/blog/" {% if output_file.startswith('zh/blog/') or (output_file.startswith('zh/category/') and not (category and category.slug == 'twinko-weekly')) or output_file.startswith('zh/tag/') %}class="active"{% endif %}>博客</a></li>
         </ul>
       </nav>
-      <a href="https://www.twinko.ai/subscribe" class="btn btn-primary" target="_blank">Subscribe</a>
+      <a href="https://www.twinko.ai/zh/subscribe" class="btn btn-primary" target="_blank">订阅</a>
       <button class="mobile-menu-button" aria-label="Toggle menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
-      
-      {% block language_switcher %}
-      <div class="language-switcher" id="langSwitcher">
-        <span class="language-icon">🌐</span>
-        <div class="language-options">
-          <a href="#" class="lang-option active">
-            <span class="lang-name">English</span>
-          </a>
-          {% if output_file == "index.html" %}
-            <a href="{{ SITEURL }}/zh/" class="lang-option">
-          {% elif output_file.startswith('blog/') %}
-            <a href="{{ SITEURL }}/zh/blog/" class="lang-option">
-          {% elif output_file.startswith('newsfeed/') %}
-            <a href="{{ SITEURL }}/zh/newsfeed/" class="lang-option">
-          {% elif output_file.startswith('newsletter/') or output_file.startswith('category/twinko-weekly/') %}
-            <a href="{{ SITEURL }}/zh/category/twinko-weekly/" class="lang-option">
-          {% elif output_file.startswith('category/') %}
-            <a href="{{ SITEURL }}/zh/categories.html" class="lang-option">
-          {% elif output_file.startswith('tag/') %}
-            <a href="{{ SITEURL }}/zh/tags.html" class="lang-option">
-          {% elif output_file == "archives.html" %}
-            <a href="{{ SITEURL }}/zh/archives.html" class="lang-option">
-          {% elif output_file == "categories.html" %}
-            <a href="{{ SITEURL }}/zh/categories.html" class="lang-option">
-          {% elif output_file == "tags.html" %}
-            <a href="{{ SITEURL }}/zh/tags.html" class="lang-option">
-          {% else %}
-            <a href="{{ SITEURL }}/zh/" class="lang-option">
-          {% endif %}
-            <span class="lang-name">中文</span>
-          </a>
-        </div>
-      </div>
-      {% endblock language_switcher %}
     </div>
   </div>
 </header>
+
+<div class="language-switcher">
+  <a href="{{ SITEURL|replace('/zh', '') }}{{ output_file|replace('zh/', '') }}" class="lang-link">English</a>
+</div>
 
 <main id="main">
   {% block content %}{% endblock content %}
@@ -281,30 +196,29 @@
 
 <footer id="footer">
   <div class="container">
-    {% block footer_content %}
     <div class="footer-content">
       <div class="footer-logo">
         <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/logo.png" alt="{{ SITENAME }}" class="footer-logo-img white-filter">
       </div>
       <div class="footer-links">
         <div class="footer-nav">
-          <h3>Content</h3>
+          <h3>内容</h3>
           <ul>
-            <li><a href="{{ SITEURL }}/archives.html">Archives</a></li>
-            <li><a href="{{ SITEURL }}/categories.html">Categories</a></li>
-            <li><a href="{{ SITEURL }}/tags.html">Tags</a></li>
+            <li><a href="{{ SITEURL }}/zh/archives.html">归档</a></li>
+            <li><a href="{{ SITEURL }}/zh/categories.html">分类</a></li>
+            <li><a href="{{ SITEURL }}/zh/tags.html">标签</a></li>
           </ul>
         </div>
         <div class="footer-nav">
-          <h3>Company</h3>
+          <h3>公司</h3>
           <ul>
-            <li><a href="https://www.twinko.ai/company" target="_blank">About Us</a></li>
-            <li><a href="https://www.twinko.ai/team" target="_blank">Our Team</a></li>
-            <li><a href="https://www.twinko.ai/contact" target="_blank">Contact</a></li>
+            <li><a href="https://www.twinko.ai/zh/company" target="_blank">关于我们</a></li>
+            <li><a href="https://www.twinko.ai/zh/team" target="_blank">团队</a></li>
+            <li><a href="https://www.twinko.ai/zh/contact" target="_blank">联系我们</a></li>
           </ul>
         </div>
         <div class="footer-social">
-          <h3>Follow Us</h3>
+          <h3>关注我们</h3>
           <ul>
             {% for name, link in SOCIAL %}
             <li><a href="{{ link }}" target="_blank">{{ name }}</a></li>
@@ -313,30 +227,17 @@
         </div>
       </div>
     </div>
-    {% endblock footer_content %}
     
-    {% block footer_copyright %}
     <div class="footer-bottom">
-      <p>&copy; {{ COPYRIGHT_YEAR }} {{ AUTHOR }}. All rights reserved.</p>
+      <p>&copy; {{ COPYRIGHT_YEAR }} {{ AUTHOR }}. 
+         内容: <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="license noopener noreferrer">CC BY-NC-ND 4.0</a> 除非特别注明。</p>
     </div>
-    {% endblock footer_copyright %}
   </div>
 </footer>
 
 <script>
   document.querySelector('.mobile-menu-button').addEventListener('click', function() {
     document.getElementById('nav').classList.toggle('mobile-open');
-  });
-  
-  // Language switcher toggle
-  document.getElementById('langSwitcher').addEventListener('click', function(e) {
-    this.classList.toggle('open');
-    e.stopPropagation();
-  });
-  
-  // Close language switcher when clicking elsewhere
-  document.addEventListener('click', function() {
-    document.getElementById('langSwitcher').classList.remove('open');
   });
   
   // Mobile dropdown handling
@@ -360,32 +261,25 @@
 {# Add Tocbot JS and initialization #}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.27.20/tocbot.min.js"></script>
 <script>
-  // Initialize TOC if the element exists
-  document.addEventListener('DOMContentLoaded', function() {
-    if (document.querySelector('.js-toc-content')) {
+  // Only initialize Tocbot on pages where the necessary elements exist
+  if (document.querySelector('.js-toc') && document.querySelector('.js-toc-content')) {
+    document.addEventListener('DOMContentLoaded', function() {
       tocbot.init({
+        // Where to render the table of contents
         tocSelector: '.js-toc',
+        // Where to grab the headings from
         contentSelector: '.js-toc-content',
+        // Which headings to grab inside of the contentSelector element
         headingSelector: 'h2, h3',
+        // For headings inside relative or absolute positioned containers within content
         hasInnerContainers: true,
-        collapseDepth: 0,
+        // Smooth scroll settings
+        scrollSmooth: true,
+        scrollSmoothDuration: 300,
+        scrollSmoothOffset: -60, // Offset for fixed header
       });
-    }
-    
-    // Make "Read more" links open in new tab
-    document.querySelectorAll('a[href*="Read more"], a[href*="阅读更多"]').forEach(function(link) {
-      link.setAttribute('target', '_blank');
-      link.setAttribute('rel', 'noopener noreferrer');
     });
-    
-    // Make all external links open in new tab
-    document.querySelectorAll('a').forEach(function(link) {
-      if (link.hostname !== window.location.hostname && link.hostname !== '') {
-        link.setAttribute('target', '_blank');
-        link.setAttribute('rel', 'noopener noreferrer');
-      }
-    });
-  });
+  }
 </script>
 
 <!-- Google Analytics -->
@@ -400,4 +294,4 @@
 {% endif %}
 
 </body>
-</html>
+</html> 

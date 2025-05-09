@@ -1,0 +1,130 @@
+{% extends "zh/base.html" %}
+
+{% block content %}
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-content">
+      <h1>欢迎来到 Twinko AI 知识中心</h1>
+      <p class="hero-description">为您提供关于AI在生命科学和医疗健康领域最新应用的见解和资讯</p>
+    </div>
+  </div>
+</section>
+
+<section class="featured-section">
+  <div class="container">
+    <h2 class="section-title">特色内容</h2>
+    <div class="featured-articles">
+      {% set featured_articles = [] %}
+      
+      {% for article in articles if article.featured %}
+        {% if featured_articles|length < 3 %}
+          {% set _ = featured_articles.append(article) %}
+        {% endif %}
+      {% endfor %}
+      
+      {% if featured_articles|length < 3 %}
+        {% for article in articles %}
+          {% if article not in featured_articles and featured_articles|length < 3 %}
+            {% set _ = featured_articles.append(article) %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      
+      {% for article in featured_articles %}
+        <div class="featured-article">
+          <div class="featured-article-image">
+            <a href="{{ SITEURL }}/{{ article.url }}">
+              {% if article.image %}
+                <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}">
+              {% else %}
+                <img src="{{ SITEURL }}/{{ DEFAULT_ARTICLE_IMAGE }}" alt="{{ article.title }}">
+              {% endif %}
+            </a>
+          </div>
+          <div class="featured-article-content">
+            <h3 class="featured-article-title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h3>
+            <div class="article-meta">
+              <span class="article-date">{{ article.locale_date }}</span>
+              <span class="article-category">
+                {% if article.category %}
+                <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+                {% endif %}
+              </span>
+            </div>
+            <div class="featured-article-summary">
+              {{ article.summary }}
+            </div>
+            <a href="{{ SITEURL }}/{{ article.url }}" class="read-more">阅读更多</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="content-sections">
+  <div class="container">
+    <div class="content-grid">
+      <div class="content-section">
+        <h2 class="section-title">最新博客文章</h2>
+        <ul class="article-list">
+          {% set blog_count = 0 %}
+          {% for article in articles if article.category and "blog" in article.category.slug|lower %}
+            {% if blog_count < 5 %}
+              <li class="article-item">
+                <span class="article-date">{{ article.locale_date }}</span>
+                <a href="{{ SITEURL }}/{{ article.url }}" class="article-title">{{ article.title }}</a>
+              </li>
+              {% set blog_count = blog_count + 1 %}
+            {% endif %}
+          {% endfor %}
+        </ul>
+        <a href="{{ SITEURL }}/zh/blog/" class="view-all">查看所有博客文章</a>
+      </div>
+      
+      <div class="content-section">
+        <h2 class="section-title">最新周报</h2>
+        <ul class="article-list">
+          {% set newsletter_count = 0 %}
+          {% for article in articles if article.category and "weekly" in article.category.slug|lower %}
+            {% if newsletter_count < 5 %}
+              <li class="article-item">
+                <span class="article-date">{{ article.locale_date }}</span>
+                <a href="{{ SITEURL }}/{{ article.url }}" class="article-title">{{ article.title }}</a>
+              </li>
+              {% set newsletter_count = newsletter_count + 1 %}
+            {% endif %}
+          {% endfor %}
+        </ul>
+        <a href="{{ SITEURL }}/zh/newsletter/" class="view-all">查看所有周报</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="categories-section">
+  <div class="container">
+    <h2 class="section-title">按类别浏览</h2>
+    <ul class="categories-list">
+      {% for category, articles in categories %}
+        <li class="category-item">
+          <a href="{{ SITEURL }}/{{ category.url }}" class="category-link">
+            <h3 class="category-title">{{ category }}</h3>
+            <span class="category-count">{{ articles|length }} 篇文章</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2 class="cta-title">想收到最新资讯？</h2>
+      <p class="cta-description">订阅我们的周报，获取AI在医疗健康和生命科学领域的最新见解和发展。</p>
+      <a href="https://www.twinko.ai/zh/subscribe" class="btn btn-primary" target="_blank">立即订阅</a>
+    </div>
+  </div>
+</section>
+{% endblock content %} 

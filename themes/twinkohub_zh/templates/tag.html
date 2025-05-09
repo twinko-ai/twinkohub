@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - 标签: {{ tag }}{% endblock %}
+
+{% block content %}
+<section class="content-section">
+  <div class="container">
+    <div class="blog-layout">
+      <!-- Main Content -->
+      <div class="blog-main">
+        <h1 class="section-title">标签: {{ tag }}</h1>
+        
+        <div class="blog-list-view">
+          {% if articles %}
+            {% for article in articles %}
+            <article class="blog-list-item">
+              {% if article.image %}
+              <div class="blog-list-image">
+                <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}">
+              </div>
+              {% elif article.Image %}
+              <div class="blog-list-image">
+                <img src="{{ SITEURL }}/{{ article.Image }}" alt="{{ article.title }}">
+              </div>
+              {% else %}
+              <div class="blog-list-image">
+                <img src="{{ SITEURL }}/{{ DEFAULT_ARTICLE_IMAGE }}" alt="{{ article.title }}">
+              </div>
+              {% endif %}
+              <div class="blog-list-content">
+                <h2 class="blog-list-title">
+                  <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+                </h2>
+                <div class="blog-list-excerpt">
+                  {{ article.summary }}
+                </div>
+                <div class="blog-list-meta">
+                  <span>{{ article.date.strftime('%Y-%m-%d') }}</span>
+                  {% if article.category %}
+                  <span>• {{ article.category }}</span>
+                  {% endif %}
+                  {% if article.tags %}
+                  <span>•</span>
+                  {% for tag in article.tags %}
+                  <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>{% if not loop.last %}, {% endif %}
+                  {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+            </article>
+            {% endfor %}
+            
+            {% if articles_page and articles_paginator.num_pages > 1 %}
+            <div class="pagination">
+              {% if articles_page.has_previous() %}
+              <a href="{{ SITEURL }}/{{ articles_previous_page.url }}" class="btn btn-secondary">&laquo; 上一页</a>
+              {% endif %}
+              <span class="active">{{ articles_page.number }} / {{ articles_paginator.num_pages }}</span>
+              {% if articles_page.has_next() %}
+              <a href="{{ SITEURL }}/{{ articles_next_page.url }}" class="btn btn-secondary">下一页 &raquo;</a>
+              {% endif %}
+            </div>
+            {% endif %}
+          {% else %}
+            <p>没有找到含有此标签的文章。</p>
+          {% endif %}
+        </div>
+      </div>
+
+      {# We'll need to create a Chinese sidebar include #}
+      <aside class="blog-sidebar">
+        <div class="sidebar-block">
+          <h3>最新文章</h3>
+          <div class="recent-posts">
+            {% for article in articles[:5] %}
+            <div class="recent-post-item">
+              <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+              <span class="recent-post-date">{{ article.date.strftime('%Y-%m-%d') }}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        
+        <div class="sidebar-block">
+          <h3>标签云</h3>
+          <div class="tag-cloud">
+            {% for tag, articles in tags|sort %}
+            <a class="tag" href="{{ SITEURL }}/{{ tag.url }}" style="font-size: {{ 90 + articles|length * 10 }}%">{{ tag }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+{% endblock %} 

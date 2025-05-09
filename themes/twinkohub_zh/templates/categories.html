@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }} - 分类{% endblock %}
+
+{% block content %}
+<section class="content-section">
+  <div class="container">
+    <h1 class="section-title">分类</h1>
+    
+    <div class="categories-list">
+      {% if categories %}
+        {% for category, articles in categories|sort %}
+        <div class="category-item">
+          <h2 class="category-title">
+            <a href="{{ SITEURL }}/{{ category.url }}">{{ category }}</a>
+            <span class="count">({{ articles|count }})</span>
+          </h2>
+          <ul class="article-list">
+            {% for article in articles %}
+            <li>
+              <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+              <span class="article-date">{{ article.date.strftime('%Y-%m-%d') }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}
+      {% else %}
+        <p>没有找到分类。</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .categories-list {
+    margin-top: 40px;
+  }
+  .category-item {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .category-item:last-child {
+    border-bottom: none;
+  }
+  .category-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+  }
+  .article-list {
+    list-style: none;
+    padding: 0;
+  }
+  .article-list li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  @media (max-width: 768px) {
+    .article-list li {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+    .article-date {
+      margin-top: 5px;
+    }
+  }
+</style>
+{% endblock %} 

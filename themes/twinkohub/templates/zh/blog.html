@@ -1,0 +1,62 @@
+{% extends "zh/base.html" %}
+
+{% block title %}博客 - {{ SITENAME }}{% endblock title %}
+
+{% block content %}
+<section class="page-header">
+  <div class="container">
+    <h1 class="page-title">博客</h1>
+    <p class="page-description">关于AI在生命科学和医疗健康领域的见解和分析</p>
+  </div>
+</section>
+
+<section class="blog-section">
+  <div class="container">
+    <div class="blog-container">
+      <div class="blog-articles">
+        {% set blog_articles = [] %}
+        {% for article in articles if article.category and "blog" in article.category.slug|lower %}
+          {% set _ = blog_articles.append(article) %}
+        {% endfor %}
+        
+        {% if blog_articles %}
+          {% for article in blog_articles %}
+            <div class="blog-article">
+              <div class="article-image">
+                <a href="{{ SITEURL }}/{{ article.url }}">
+                  {% if article.image %}
+                    <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}">
+                  {% else %}
+                    <img src="{{ SITEURL }}/{{ DEFAULT_ARTICLE_IMAGE }}" alt="{{ article.title }}">
+                  {% endif %}
+                </a>
+              </div>
+              <div class="article-content">
+                <h2 class="article-title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+                <div class="article-meta">
+                  <span class="article-date">{{ article.locale_date }}</span>
+                  <span class="article-category">
+                    {% if article.category %}
+                    <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
+                    {% endif %}
+                  </span>
+                </div>
+                <div class="article-summary">
+                  {{ article.summary }}
+                </div>
+                <a href="{{ SITEURL }}/{{ article.url }}" class="read-more">阅读更多</a>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p class="no-articles">目前没有博客文章。请稍后查看。</p>
+        {% endif %}
+      </div>
+      
+      <div class="sidebar">
+        {% include "zh/includes/sidebar.html" %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %} 

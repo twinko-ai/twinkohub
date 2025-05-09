@@ -1,0 +1,74 @@
+{% extends "zh/base.html" %}
+
+{% block title %}周报 - {{ SITENAME }}{% endblock title %}
+
+{% block content %}
+<section class="page-header">
+  <div class="container">
+    <h1 class="page-title">周报</h1>
+    <p class="page-description">关注AI在医疗健康和生命科学领域的最新发展和突破</p>
+  </div>
+</section>
+
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-container">
+      <div class="newsletter-articles">
+        {% set newsletter_articles = [] %}
+        {% for article in articles if article.category and "weekly" in article.category.slug|lower %}
+          {% set _ = newsletter_articles.append(article) %}
+        {% endfor %}
+        
+        {% if newsletter_articles %}
+          {% for article in newsletter_articles %}
+            <div class="newsletter-article">
+              <div class="article-image">
+                <a href="{{ SITEURL }}/{{ article.url }}">
+                  {% if article.image %}
+                    <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}">
+                  {% else %}
+                    <img src="{{ SITEURL }}/{{ DEFAULT_ARTICLE_IMAGE }}" alt="{{ article.title }}">
+                  {% endif %}
+                </a>
+              </div>
+              <div class="article-content">
+                <h2 class="article-title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+                <div class="article-meta">
+                  <span class="article-date">{{ article.locale_date }}</span>
+                </div>
+                <div class="article-summary">
+                  {{ article.summary }}
+                </div>
+                <a href="{{ SITEURL }}/{{ article.url }}" class="read-more">阅读更多</a>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p class="no-articles">目前没有周报。请稍后查看。</p>
+        {% endif %}
+      </div>
+      
+      <div class="sidebar">
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">订阅我们的周报</h3>
+          <p>每周直接收到我们的AI动态和见解</p>
+          <a href="https://www.twinko.ai/zh/subscribe" class="btn btn-primary" target="_blank">立即订阅</a>
+        </div>
+        
+        <div class="sidebar-section">
+          <h3 class="sidebar-title">周报分类</h3>
+          <ul class="category-list">
+            {% for category, articles in categories %}
+              {% if "weekly" in category.slug|lower %}
+                <li class="category-item">
+                  <a href="{{ SITEURL }}/{{ category.url }}">{{ category }} ({{ articles|length }})</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %} 

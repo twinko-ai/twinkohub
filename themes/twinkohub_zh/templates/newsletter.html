@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}周报 - {{ SITENAME }}{% endblock %}
+
+{% block content %}
+<section class="content-section">
+  <div class="container">
+    <div class="blog-main full-width">
+      <h1 class="section-title">行业AI周刊</h1>
+      
+      <div class="blog-list">
+        {% set newsletter_articles = [] %}
+        {% for article in articles %}
+          {% if article.category and article.category.slug == 'twinko-weekly' %}
+            {% set _ = newsletter_articles.append(article) %}
+          {% endif %}
+        {% endfor %}
+        
+        {% if newsletter_articles %}
+          {% for article in (newsletter_articles|sort(attribute='date', reverse=True)) %}
+          <div class="blog-card">
+            {% if article.image %}
+            <div class="blog-card-image">
+              <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}">
+            </div>
+            {% else %}
+            <div class="blog-card-image">
+              <img src="{{ SITEURL }}/{{ DEFAULT_ARTICLE_IMAGE }}" alt="{{ article.title }}">
+            </div>
+            {% endif %}
+            <div class="blog-card-content">
+              <div>
+                <h2 class="blog-card-title">
+                  <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+                </h2>
+                <div class="blog-card-excerpt">
+                  {{ article.summary }}
+                </div>
+              </div>
+              <div class="blog-card-meta">
+                <span>{{ article.date.strftime('%Y-%m-%d') }}</span>
+                {% if article.category %}
+                  <span>• {{ article.category }}</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          
+          {% if newsletter_articles|length > DEFAULT_PAGINATION %}
+          <div class="pagination">
+            <!-- Pagination would go here -->
+            <span class="active">1 / {{ (newsletter_articles|length / DEFAULT_PAGINATION)|round(0, 'ceil')|int }}</span>
+          </div>
+          {% endif %}
+        {% else %}
+          <p>暂无周报。请稍后查看我们即将推出的周报。</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %} 

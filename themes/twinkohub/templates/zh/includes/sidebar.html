@@ -1,0 +1,25 @@
+<div class="sidebar-section">
+  <h3 class="sidebar-title">分类</h3>
+  <ul class="category-list">
+    {% for category, articles in categories %}
+      <li class="category-item">
+        <a href="{{ SITEURL }}/{{ category.url }}">{{ category }} ({{ articles|length }})</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="sidebar-section">
+  <h3 class="sidebar-title">标签</h3>
+  <div class="tag-cloud">
+    {% for tag, articles in tags|sort %}
+      <a href="{{ SITEURL }}/{{ tag.url }}" class="tag" style="font-size: {{ 90 + (articles|length * 5) }}%">{{ tag }}</a>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="sidebar-section">
+  <h3 class="sidebar-title">订阅</h3>
+  <p>获取我们关于AI在医疗健康和生命科学领域的最新见解</p>
+  <a href="https://www.twinko.ai/zh/subscribe" class="btn btn-primary" target="_blank">订阅周报</a>
+</div> 

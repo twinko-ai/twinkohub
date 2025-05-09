@@ -16,6 +16,7 @@ from pelican.settings import DEFAULT_CONFIG, get_settings_from_file
 
 OPEN_BROWSER_ON_SERVE = True
 SETTINGS_FILE_BASE = "pelicanconf.py"
+SETTINGS_FILE_BASE_ZH = "pelicanconf_zh.py"
 SETTINGS = {}
 SETTINGS.update(DEFAULT_CONFIG)
 LOCAL_SETTINGS = get_settings_from_file(SETTINGS_FILE_BASE)
@@ -23,7 +24,9 @@ SETTINGS.update(LOCAL_SETTINGS)
 
 CONFIG = {
     "settings_base": SETTINGS_FILE_BASE,
+    "settings_base_zh": SETTINGS_FILE_BASE_ZH,
     "settings_publish": "publishconf.py",
+    "settings_publish_zh": "publishconf_zh.py",
     # Output path. Can be absolute or relative to tasks.py. Default: 'output'
     "deploy_path": SETTINGS["OUTPUT_PATH"],
     # Host and port for `serve`
@@ -42,20 +45,54 @@ def clean(c):
 
 @task
 def build(c):
-    """Build local version of site"""
+    """Build local version of English site"""
     pelican_run("-s {settings_base}".format(**CONFIG))
 
 
 @task
+def build_zh(c):
+    """Build local version of Chinese site"""
+    pelican_run("-s {settings_base_zh}".format(**CONFIG))
+
+
+@task
+def build_all(c):
+    """Build both English and Chinese sites"""
+    build(c)
+    build_zh(c)
+
+
+@task
 def rebuild(c):
-    """`build` with the delete switch"""
-    pelican_run("-d -s {settings_base}".format(**CONFIG))
+    """Clean and rebuild English site"""
+    clean(c)
+    build(c)
+
+
+@task
+def rebuild_zh(c):
+    """Clean and rebuild Chinese site"""
+    clean(c)
+    build_zh(c)
+
+
+@task
+def rebuild_all(c):
+    """Clean and rebuild both English and Chinese sites"""
+    clean(c)
+    build_all(c)
 
 
 @task
 def regenerate(c):
-    """Automatically regenerate site upon file modification"""
+    """Automatically regenerate English site upon file modification"""
     pelican_run("-r -s {settings_base}".format(**CONFIG))
+
+
+@task
+def regenerate_zh(c):
+    """Automatically regenerate Chinese site upon file modification"""
+    pelican_run("-r -s {settings_base_zh}".format(**CONFIG))
 
 
 @task
@@ -83,15 +120,43 @@ def serve(c):
 
 @task
 def reserve(c):
-    """`build`, then `serve`"""
+    """Build English site, then serve"""
     build(c)
     serve(c)
 
 
 @task
+def reserve_zh(c):
+    """Build Chinese site, then serve"""
+    build_zh(c)
+    serve(c)
+
+
+@task
+def reserve_all(c):
+    """Build both sites, then serve"""
+    build_all(c)
+    serve(c)
+
+
+@task
 def preview(c):
-    """Build production version of site"""
+    """Build production version of English site"""
     pelican_run("-s {settings_publish}".format(**CONFIG))
+
+
+@task
+def preview_zh(c):
+    """Build production version of Chinese site"""
+    pelican_run("-s {settings_publish_zh}".format(**CONFIG))
+
+
+@task
+def preview_all(c):
+    """Build production version of both sites"""
+    preview(c)
+    preview_zh(c)
+
 
 @task
 def livereload(c):
@@ -134,9 +199,21 @@ def livereload(c):
 
 @task
 def publish(c):
-    """Publish to production via rsync"""
+    """Publish English site to production"""
     pelican_run("-s {settings_publish}".format(**CONFIG))
-    print("Publish task needs rsync configuration in tasks.py or environment.")
+
+
+@task
+def publish_zh(c):
+    """Publish Chinese site to production"""
+    pelican_run("-s {settings_publish_zh}".format(**CONFIG))
+
+
+@task
+def publish_all(c):
+    """Publish both sites to production"""
+    publish(c)
+    publish_zh(c)
 
 
 def pelican_run(cmd):

@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %}{{ SITENAME }}{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>Twinko AI 知识中心</h1>
+      <p>权威的人工智能行业资讯、分析和见解</p>
+      <div class="hero-actions">
+        <a href="https://www.twinko.ai/zh/subscribe" class="btn btn-primary" target="_blank">订阅</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+    <h2 class="section-title">最新博客</h2>
+    
+    <div class="blog-list">
+      {% set blog_articles = [] %}
+      {% for article in articles %}
+        {% if article.category and article.category.slug != 'twinko-weekly' %}
+          {% set _ = blog_articles.append(article) %}
+        {% endif %}
+      {% endfor %}
+      
+      {% set blog_articles = (blog_articles|sort(attribute='date', reverse=True)) %}
+      {% for article in blog_articles[:3] %}
+      <div class="blog-card">
+        {% if article.image %}
+        <div class="blog-card-image">
+          <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}">
+        </div>
+        {% else %}
+        <div class="blog-card-image">
+          <img src="{{ SITEURL }}/{{ DEFAULT_ARTICLE_IMAGE }}" alt="{{ article.title }}">
+        </div>
+        {% endif %}
+        <div class="blog-card-content">
+          <div>
+            <h3 class="blog-card-title">
+              <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+            </h3>
+            <div class="blog-card-excerpt">
+              {{ article.summary }}
+            </div>
+          </div>
+          <div class="blog-card-meta">
+            <span>{{ article.date.strftime('%Y-%m-%d') }}</span>
+            {% if article.category %}
+            <span> • {{ article.category }}</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    
+    <div class="text-center" style="margin-top: 40px;">
+      <a href="{{ SITEURL }}/zh/blog/" class="btn">查看所有博客</a>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" style="background-color: var(--secondary-bg);">
+  <div class="container">
+    <h2 class="section-title">最新周报</h2>
+    
+    <div class="blog-list">
+      {% set newsletter_articles = [] %}
+      {% for article in articles %}
+        {% if article.category and article.category.slug == 'twinko-weekly' %}
+          {% set _ = newsletter_articles.append(article) %}
+        {% endif %}
+      {% endfor %}
+      
+      {% set newsletter_articles = (newsletter_articles|sort(attribute='date', reverse=True)) %}
+      {% for article in newsletter_articles[:3] %}
+      <div class="blog-card">
+        {% if article.image %}
+        <div class="blog-card-image">
+          <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}">
+        </div>
+        {% else %}
+        <div class="blog-card-image">
+          <img src="{{ SITEURL }}/{{ DEFAULT_ARTICLE_IMAGE }}" alt="{{ article.title }}">
+        </div>
+        {% endif %}
+        <div class="blog-card-content">
+          <div>
+            <h3 class="blog-card-title">
+              <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+            </h3>
+            <div class="blog-card-excerpt">
+              {{ article.summary }}
+            </div>
+          </div>
+          <div class="blog-card-meta">
+            <span>{{ article.date.strftime('%Y-%m-%d') }}</span>
+            {% if article.category %}
+              <span> • {{ article.category }}</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    
+    <div class="text-center" style="margin-top: 40px;">
+      <a href="{{ SITEURL }}/zh/newsletter/" class="btn">查看所有周报</a>
+    </div>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+    <h2 class="section-title">最新AI新闻动态</h2>
+    
+    {% if RSS_FEED_IDS['homepage_carousel'] %}
+    <div class="newsfeed-carousel" style="margin-bottom: 30px;">
+        <rssapp-carousel id="{{ RSS_FEED_IDS['homepage_carousel'] }}"></rssapp-carousel>
+        <script src="https://widget.rss.app/v1/carousel.js" type="text/javascript" async></script>
+    </div>
+    {% else %}
+    <p style="text-align: center; margin-bottom: 30px;">新闻动态亮点目前不可用。请访问完整新闻动态获取最新更新。</p>
+    {% endif %}
+    
+    <div class="text-center">
+      <a href="{{ SITEURL }}/zh/newsfeed/" class="btn">查看所有新闻动态</a>
+    </div>
+  </div>
+</section>
+
+{% endblock content %} 

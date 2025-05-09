@@ -60,6 +60,10 @@ ARTICLE_SAVE_AS = '{path}/{slug}.html'
 PAGE_URL = '{slug}.html'
 PAGE_SAVE_AS = '{slug}.html'
 
+# Use the filename as slug for newsletter articles to prevent nested folders
+SLUGIFY_SOURCE = 'basename'  # Use filename instead of title for slug
+PATH_METADATA = '(?P<path>.*)/(?P<slug>.*)\.md'
+
 # Categories and tags settings
 CATEGORY_URL = 'category/{slug}/'
 CATEGORY_SAVE_AS = 'category/{slug}/index.html'
