@@ -25,6 +25,11 @@ ARTICLE_PATHS = ['zh/blog', 'zh/newsletter']
 PAGE_PATHS = ['zh/pages']
 STATIC_PATHS = ['images', 'extra']
 
+# Ensure 404.html is copied to the output directory root
+EXTRA_PATH_METADATA = {
+    'extra/404.html': {'path': '404.html'},
+}
+
 # Default language (Chinese)
 TIMEZONE = 'Asia/Shanghai'
 DEFAULT_LANG = 'zh'

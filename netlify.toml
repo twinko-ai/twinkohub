@@ -1,5 +1,12 @@
 [build]
-  command = "make publish-all"
+  command = """
+    echo "Building Twinko Hub..."
+    pelican content -s publishconf.py
+    echo "✅ English site built."
+    pelican content -s publishconf_zh.py
+    echo "✅ Chinese site built."
+    echo "✅ Build completed."
+  """
   publish = "output"
 
 [build.environment]
@@ -27,6 +34,46 @@
   to = "https://hub.twinko.ai/:splat"
   status = 301
   force = true
+
+# Ensure blog posts work
+[[redirects]]
+  from = "/blog/*"
+  to = "/blog/:splat/index.html"
+  status = 200
+  force = false
+
+# Ensure newsletter articles work
+[[redirects]]
+  from = "/newsletter/*"
+  to = "/newsletter/:splat/index.html"
+  status = 200
+  force = false
+
+# Ensure Chinese blog posts work
+[[redirects]]
+  from = "/zh/blog/*"
+  to = "/zh/blog/:splat/index.html"
+  status = 200
+  force = false
+
+# Ensure Chinese newsletter articles work
+[[redirects]]
+  from = "/zh/newsletter/*"
+  to = "/zh/newsletter/:splat/index.html"
+  status = 200
+  force = false
+
+# Handle 404s for HTML pages by redirecting to index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 404
+
+# Add a custom 404 page
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
 
 # Redirect for SPA behavior (only if needed)
 # [[redirects]]

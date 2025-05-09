@@ -46,6 +46,11 @@ ARTICLE_PATHS = ['en/blog', 'en/newsletter']
 PAGE_PATHS = ['en/pages']
 STATIC_PATHS = ['images', 'extra']
 
+# Ensure 404.html is copied to the output directory root
+EXTRA_PATH_METADATA = {
+    'extra/404.html': {'path': '404.html'},
+}
+
 TIMEZONE = 'America/New_York'
 DEFAULT_LANG = 'en'
 THEME = 'themes/twinkohub'
