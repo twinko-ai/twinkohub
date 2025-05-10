@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
-  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css">
-  <link rel="icon" href="{{ SITEURL }}/theme/images/favicon.ico">
+  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css">
+  <link rel="icon" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/favicon.ico">
   
   {# Feed Discovery #}
   {% if FEED_ALL_ATOM %}<link href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />{% endif %}
