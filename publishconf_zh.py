@@ -64,9 +64,9 @@ DIRECT_TEMPLATES = [
 LOGO = '/theme/images/logo.png'
 LOGO_FOOTER = '/theme/images/logo-footer.png'
 
-# URL settings - Ensure only one 'zh' in the path
-ARTICLE_URL = 'zh/{path}/{slug}.html'
-ARTICLE_SAVE_AS = 'zh/{path}/{slug}.html'
+# URL settings - Avoid duplicate zh in paths
+ARTICLE_URL = '{path}/{slug}.html'
+ARTICLE_SAVE_AS = '{path}/{slug}.html'
 PAGE_URL = 'zh/{slug}.html'
 PAGE_SAVE_AS = 'zh/{slug}.html'
 

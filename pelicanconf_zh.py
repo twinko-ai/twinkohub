@@ -46,8 +46,8 @@ LOGO = '/theme/images/logo.png'
 LOGO_FOOTER = '/theme/images/logo-footer.png'
 
 # URL settings 
-ARTICLE_URL = 'zh/{path}/{slug}.html'
-ARTICLE_SAVE_AS = 'zh/{path}/{slug}.html'
+ARTICLE_URL = '{path}/{slug}.html'
+ARTICLE_SAVE_AS = '{path}/{slug}.html'
 PAGE_URL = 'zh/{slug}.html'
 PAGE_SAVE_AS = 'zh/{slug}.html'
 
