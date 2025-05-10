@@ -28,11 +28,11 @@
     <article class="article">
       {% if article.Image %}
       <div class="article-header-image">
-        <img src="{{ SITEURL }}/{{ article.Image }}" alt="{{ article.title }}" class="header-image">
+        <img src="{% if 'fix_zh_url' in JINJA_FILTERS %}{{ (SITEURL + '/' + article.Image)|fix_zh_url }}{% else %}{{ SITEURL }}/{{ article.Image }}{% endif %}" alt="{{ article.title }}" class="header-image">
       </div>
       {% elif article.image %}
       <div class="article-header-image">
-        <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}" class="header-image">
+        <img src="{% if 'fix_zh_url' in JINJA_FILTERS %}{{ (SITEURL + '/' + article.image)|fix_zh_url }}{% else %}{{ SITEURL }}/{{ article.image }}{% endif %}" alt="{{ article.title }}" class="header-image">
       </div>
       {% endif %}
       
@@ -94,4 +94,30 @@
   </div>
 </div>
 
-{% endblock %} 
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Fix image paths in article content
+    const articleContent = document.querySelector('.article-content');
+    if (articleContent) {
+      const contentImages = articleContent.querySelectorAll('img');
+      contentImages.forEach(function(img) {
+        const src = img.getAttribute('src');
+        if (src) {
+          // Fix double slashes
+          let newSrc = src.replace('/zh//images/', '/images/');
+          // Remove /zh/ from image paths as they should be at root
+          newSrc = newSrc.replace('/zh/images/', '/images/');
+          // Fix any double slashes
+          newSrc = newSrc.replace('//images/', '/images/');
+          if (newSrc !== src) {
+            img.setAttribute('src', newSrc);
+          }
+        }
+      });
+    }
+  });
+</script>
+{% endblock extra_js %} 

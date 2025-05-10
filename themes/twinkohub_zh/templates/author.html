@@ -16,15 +16,15 @@
             <article class="blog-list-item">
               {% if article.image %}
               <div class="blog-list-image">
-                <img src="{{ SITEURL }}/{{ article.image }}" alt="{{ article.title }}">
+                <img src="{% if 'fix_zh_url' in JINJA_FILTERS %}{{ (SITEURL + '/' + article.image)|fix_zh_url }}{% else %}{{ SITEURL }}/{{ article.image }}{% endif %}" alt="{{ article.title }}">
               </div>
               {% elif article.Image %}
               <div class="blog-list-image">
-                <img src="{{ SITEURL }}/{{ article.Image }}" alt="{{ article.title }}">
+                <img src="{% if 'fix_zh_url' in JINJA_FILTERS %}{{ (SITEURL + '/' + article.Image)|fix_zh_url }}{% else %}{{ SITEURL }}/{{ article.Image }}{% endif %}" alt="{{ article.title }}">
               </div>
               {% else %}
               <div class="blog-list-image">
-                <img src="{{ SITEURL }}/{{ DEFAULT_ARTICLE_IMAGE }}" alt="{{ article.title }}">
+                <img src="{% if 'fix_zh_url' in JINJA_FILTERS %}{{ (SITEURL + '/' + DEFAULT_ARTICLE_IMAGE)|fix_zh_url }}{% else %}{{ SITEURL }}/{{ DEFAULT_ARTICLE_IMAGE }}{% endif %}" alt="{{ article.title }}">
               </div>
               {% endif %}
               <div class="blog-list-content">

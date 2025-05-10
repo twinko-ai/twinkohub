@@ -358,13 +358,31 @@
   // Fix for double zh paths in production
   document.addEventListener('DOMContentLoaded', function() {
     // Only run this fix on the actual production site, not on localhost
-    if (window.location.hostname === 'hub.twinko.ai') {
+    if (window.location.hostname === 'hub.twinko.ai' || 
+        window.location.hostname.includes('netlify') ||
+        window.location.hostname.includes('preview')) {
       // Fix all links with double /zh/zh/ pattern
       document.querySelectorAll('a[href*="/zh/zh/"]').forEach(function(link) {
         const href = link.getAttribute('href');
         if (href) {
           // Replace /zh/zh/ with /zh/
           link.setAttribute('href', href.replace('/zh/zh/', '/zh/'));
+        }
+      });
+      
+      // Fix image paths
+      document.querySelectorAll('img').forEach(function(img) {
+        const src = img.getAttribute('src');
+        if (src) {
+          // Fix double slashes
+          let newSrc = src.replace('/zh//images/', '/images/');
+          // Remove /zh/ from image paths as they should be at root
+          newSrc = newSrc.replace('/zh/images/', '/images/');
+          // Fix any double slashes
+          newSrc = newSrc.replace('//images/', '/images/');
+          if (newSrc !== src) {
+            img.setAttribute('src', newSrc);
+          }
         }
       });
       

@@ -189,6 +189,15 @@ def fix_zh_url(url):
     elif '/zh/theme/' in url:
         # Fix theme paths to be properly absolute
         return url.replace('/zh/theme/', '/theme/')
+    elif '/zh/images/' in url:
+        # Since images are shared between language sites, they should be at root level
+        return url.replace('/zh/images/', '/images/')
+    elif '/zh//images/' in url:
+        # Fix double slash issues in image paths
+        return url.replace('/zh//images/', '/images/')
+    elif '//images/' in url:
+        # Fix any double slash in image paths
+        return url.replace('//images/', '/images/')
     return url
 
 # Register the filter for templates
