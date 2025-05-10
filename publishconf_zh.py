@@ -179,4 +179,16 @@ RSS_FEED_IDS = {
 if PELICAN_ENV == 'production':
     GOOGLE_ANALYTICS = os.getenv('GOOGLE_ANALYTICS')
 else:
-    GOOGLE_ANALYTICS = None 
+    GOOGLE_ANALYTICS = None
+
+# Fix double zh paths in production
+def fix_zh_url(url):
+    """Fix double /zh/zh/ in URLs for production"""
+    if '/zh/zh/' in url:
+        return url.replace('/zh/zh/', '/zh/')
+    return url
+
+# Register the filter for templates
+JINJA_FILTERS = {
+    'fix_zh_url': fix_zh_url,
+} 

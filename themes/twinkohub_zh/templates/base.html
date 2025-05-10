@@ -220,15 +220,15 @@
       </div>
       <nav id="nav">
         <ul>
-          <li><a href="{{ SITEURL }}/zh/" {% if output_file == "zh/index.html" %}class="active"{% endif %}>首页</a></li>
-          <li><a href="{{ SITEURL }}/zh/newsfeed/" {% if output_file.startswith('zh/newsfeed/') %}class="active"{% endif %}>新闻动态</a></li>
+          <li><a href="{% if 'fix_zh_url' in JINJA_FILTERS %}{{ (SITEURL + '/zh/')|fix_zh_url }}{% else %}{{ SITEURL }}/zh/{% endif %}" {% if output_file == "zh/index.html" %}class="active"{% endif %}>首页</a></li>
+          <li><a href="{% if 'fix_zh_url' in JINJA_FILTERS %}{{ (SITEURL + '/zh/newsfeed/')|fix_zh_url }}{% else %}{{ SITEURL }}/zh/newsfeed/{% endif %}" {% if output_file.startswith('zh/newsfeed/') %}class="active"{% endif %}>新闻动态</a></li>
           <li>
             <span class="dropdown-toggle dropdown-label {% if output_file.startswith('zh/newsletter/') or (category and category.slug == 'twinko-weekly') %}active{% endif %}">周报</span>
             <ul class="dropdown">
-              <li><a href="{{ SITEURL }}/zh/category/twinko-weekly/">行业AI周刊</a></li>
+              <li><a href="{% if 'fix_zh_url' in JINJA_FILTERS %}{{ (SITEURL + '/zh/category/twinko-weekly/')|fix_zh_url }}{% else %}{{ SITEURL }}/zh/category/twinko-weekly/{% endif %}">行业AI周刊</a></li>
             </ul>
           </li>
-          <li><a href="{{ SITEURL }}/zh/blog/" {% if output_file.startswith('zh/blog/') or (output_file.startswith('zh/category/') and not (category and category.slug == 'twinko-weekly')) or output_file.startswith('zh/tag/') %}class="active"{% endif %}>博客</a></li>
+          <li><a href="{% if 'fix_zh_url' in JINJA_FILTERS %}{{ (SITEURL + '/zh/blog/')|fix_zh_url }}{% else %}{{ SITEURL }}/zh/blog/{% endif %}" {% if output_file.startswith('zh/blog/') or (output_file.startswith('zh/category/') and not (category and category.slug == 'twinko-weekly')) or output_file.startswith('zh/tag/') %}class="active"{% endif %}>博客</a></li>
         </ul>
       </nav>
       <a href="https://www.twinko.ai/zh/subscribe" class="btn btn-primary" target="_blank">订阅</a>
@@ -287,9 +287,9 @@
         <div class="footer-nav">
           <h3>内容</h3>
           <ul>
-            <li><a href="{{ SITEURL }}/zh/archives.html">归档</a></li>
-            <li><a href="{{ SITEURL }}/zh/categories.html">分类</a></li>
-            <li><a href="{{ SITEURL }}/zh/tags.html">标签</a></li>
+            <li><a href="{% if 'fix_zh_url' in JINJA_FILTERS %}{{ (SITEURL + '/zh/archives.html')|fix_zh_url }}{% else %}{{ SITEURL }}/zh/archives.html{% endif %}">归档</a></li>
+            <li><a href="{% if 'fix_zh_url' in JINJA_FILTERS %}{{ (SITEURL + '/zh/categories.html')|fix_zh_url }}{% else %}{{ SITEURL }}/zh/categories.html{% endif %}">分类</a></li>
+            <li><a href="{% if 'fix_zh_url' in JINJA_FILTERS %}{{ (SITEURL + '/zh/tags.html')|fix_zh_url }}{% else %}{{ SITEURL }}/zh/tags.html{% endif %}">标签</a></li>
           </ul>
         </div>
         <div class="footer-nav">
@@ -353,6 +353,30 @@
 <!-- Scripts -->
 {# Add Tocbot JS and initialization #}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.27.20/tocbot.min.js"></script>
+
+<script>
+  // Fix for double zh paths in production
+  document.addEventListener('DOMContentLoaded', function() {
+    // Only run this fix on the actual production site, not on localhost
+    if (window.location.hostname === 'hub.twinko.ai') {
+      // Fix all links with double /zh/zh/ pattern
+      document.querySelectorAll('a[href*="/zh/zh/"]').forEach(function(link) {
+        const href = link.getAttribute('href');
+        if (href) {
+          // Replace /zh/zh/ with /zh/
+          link.setAttribute('href', href.replace('/zh/zh/', '/zh/'));
+        }
+      });
+      
+      // Check if current URL has double /zh/zh/ and redirect
+      if (window.location.pathname.includes('/zh/zh/')) {
+        const newPath = window.location.pathname.replace('/zh/zh/', '/zh/');
+        window.history.replaceState(null, document.title, newPath + window.location.search + window.location.hash);
+      }
+    }
+  });
+</script>
+
 <script>
   // Only initialize Tocbot on pages where the necessary elements exist
   if (document.querySelector('.js-toc') && document.querySelector('.js-toc-content')) {
