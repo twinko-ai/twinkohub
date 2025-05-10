@@ -186,6 +186,9 @@ def fix_zh_url(url):
     """Fix double /zh/zh/ in URLs for production"""
     if '/zh/zh/' in url:
         return url.replace('/zh/zh/', '/zh/')
+    elif '/zh/theme/' in url:
+        # Fix theme paths to be properly absolute
+        return url.replace('/zh/theme/', '/theme/')
     return url
 
 # Register the filter for templates

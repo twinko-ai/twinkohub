@@ -87,3 +87,7 @@ config.py
 config.json
 config.yaml
 config.yml 
+
+# cursor
+.cursorrules
+.cursor/

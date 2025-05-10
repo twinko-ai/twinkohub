@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
-  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css">
-  <link rel="icon" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/favicon.ico">
+  <link rel="stylesheet" href="{% if 'fix_zh_url' in JINJA_FILTERS %}{{ (SITEURL + '/' + THEME_STATIC_DIR + '/css/style.css')|fix_zh_url }}{% else %}{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css{% endif %}">
+  <link rel="icon" href="{% if 'fix_zh_url' in JINJA_FILTERS %}{{ (SITEURL + '/' + THEME_STATIC_DIR + '/images/favicon.ico')|fix_zh_url }}{% else %}{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/favicon.ico{% endif %}">
   
   {# Feed Discovery #}
   {% if FEED_ALL_ATOM %}<link href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />{% endif %}
@@ -214,7 +214,7 @@
     <div class="header-content">
       <div class="logo-container">
         <a href="{{ SITEURL }}/zh/" class="logo">
-          <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/logo.png" alt="{{ SITENAME }}">
+          <img src="{% if 'fix_zh_url' in JINJA_FILTERS %}{{ (SITEURL + '/' + THEME_STATIC_DIR + '/images/logo.png')|fix_zh_url }}{% else %}{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/logo.png{% endif %}" alt="{{ SITENAME }}">
         </a>
         <div class="logo-text">知识中心</div>
       </div>
@@ -281,7 +281,7 @@
   <div class="container">
     <div class="footer-content">
       <div class="footer-logo">
-        <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/logo.png" alt="{{ SITENAME }}" class="footer-logo-img white-filter">
+        <img src="{% if 'fix_zh_url' in JINJA_FILTERS %}{{ (SITEURL + '/' + THEME_STATIC_DIR + '/images/logo.png')|fix_zh_url }}{% else %}{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/logo.png{% endif %}" alt="{{ SITENAME }}" class="footer-logo-img white-filter">
       </div>
       <div class="footer-links">
         <div class="footer-nav">
