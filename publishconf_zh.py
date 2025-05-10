@@ -35,8 +35,8 @@ else:
 # Always use absolute URLs in production environments
 RELATIVE_URLS = False
 
-# Delete output directory before generating new files
-DELETE_OUTPUT_DIRECTORY = True
+# Do not delete output directory to preserve English site files
+DELETE_OUTPUT_DIRECTORY = False
 
 # Enable Google Analytics in production
 if PELICAN_ENV == 'production':

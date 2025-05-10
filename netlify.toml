@@ -1,11 +1,7 @@
 [build]
   command = """
-    echo "Building Twinko Hub..."
-    pelican content -s publishconf.py
-    echo "✅ English site built."
-    pelican content -s publishconf_zh.py
-    echo "✅ Chinese site built."
-    echo "✅ Build completed."
+  pelican content -s publishconf.py
+  pelican content -s publishconf_zh.py
   """
   publish = "output"
 
@@ -28,169 +24,12 @@
 [context.branch-deploy]
   environment = { PELICAN_ENV = "staging" }
 
-# Redirect from Netlify subdomain to your custom domain
+# Redirect from Netlify subdomain to your custom domain (optional)
 [[redirects]]
   from = "https://twinkohub.netlify.app/*"
   to = "https://hub.twinko.ai/:splat"
   status = 301
   force = true
-
-# Root redirects for main sections
-[[redirects]]
-  from = "/"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/blog"
-  to = "/blog/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/blog/"
-  to = "/blog/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/newsletter"
-  to = "/newsletter/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/newsletter/"
-  to = "/newsletter/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/newsfeed"
-  to = "/newsfeed/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/newsfeed/"
-  to = "/newsfeed/index.html"
-  status = 200
-
-# Chinese root redirects
-[[redirects]]
-  from = "/zh"
-  to = "/zh/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/zh/"
-  to = "/zh/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/zh/blog"
-  to = "/zh/blog/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/zh/blog/"
-  to = "/zh/blog/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/zh/newsletter"
-  to = "/zh/newsletter/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/zh/newsletter/"
-  to = "/zh/newsletter/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/zh/newsfeed"
-  to = "/zh/newsfeed/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/zh/newsfeed/"
-  to = "/zh/newsfeed/index.html"
-  status = 200
-
-# Handle content paths with wildcard matching
-[[redirects]]
-  from = "/blog/:slug"
-  to = "/blog/:slug.html"
-  status = 200
-
-[[redirects]]
-  from = "/newsletter/:slug"
-  to = "/newsletter/:slug.html"
-  status = 200
-
-[[redirects]]
-  from = "/zh/blog/:slug"
-  to = "/zh/blog/:slug.html"
-  status = 200
-
-[[redirects]]
-  from = "/zh/newsletter/:slug"
-  to = "/zh/newsletter/:slug.html"
-  status = 200
-
-# Category redirects
-[[redirects]]
-  from = "/category/:slug"
-  to = "/category/:slug/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/category/:slug/"
-  to = "/category/:slug/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/zh/category/:slug"
-  to = "/zh/category/:slug/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/zh/category/:slug/"
-  to = "/zh/category/:slug/index.html"
-  status = 200
-
-# Tag redirects
-[[redirects]]
-  from = "/tag/:slug"
-  to = "/tag/:slug/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/tag/:slug/"
-  to = "/tag/:slug/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/zh/tag/:slug"
-  to = "/zh/tag/:slug/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/zh/tag/:slug/"
-  to = "/zh/tag/:slug/index.html"
-  status = 200
-
-# Handle 404s with a custom page
-[[redirects]]
-  from = "/*"
-  to = "/404.html"
-  status = 404
 
 # Redirect for SPA behavior (only if needed)
 # [[redirects]]
